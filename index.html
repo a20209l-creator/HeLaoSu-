@@ -28,7 +28,7 @@
       -webkit-text-fill-color: transparent;
     }
     .bg-dark-card {
-      background: rgba(18, 16, 13, 0.88);
+      background: rgba(18, 16, 13, 0.90);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(212, 175, 55, 0.3);
     }
@@ -36,481 +36,451 @@
       background: radial-gradient(circle at 50% 30%, #1c1a17 0%, #0c0b0a 100%);
     }
 
-    /* 首頁滿版背景圖樣式 */
+    /* 首頁滿版背景圖樣式 - 自動適應不同螢幕 */
     .hero-bg-banner {
-      background-image: linear-gradient(to right, rgba(13, 13, 13, 0.92) 0%, rgba(13, 13, 13, 0.75) 50%, rgba(13, 13, 13, 0.88) 100%), url('./banner.jpg');
+      background-image: linear-gradient(180deg, rgba(13, 13, 13, 0.82) 0%, rgba(13, 13, 13, 0.7) 50%, rgba(13, 13, 13, 0.95) 100%), url('./banner.jpg');
       background-size: cover;
-      background-position: center;
-      background-repeat: no-no-repeat;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
 
     .gold-border-box {
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.05);
     }
 
-    /* 檢視模式 (電腦/手機) */
-    .sim-wrapper {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      margin: 0 auto;
+    /* 手機版原生 RWD 微調 */
+    @media (max-width: 640px) {
+      .hero-title { font-size: 2.1rem !important; line-height: 2.5rem !important; }
+      .hero-bg-banner { background-position: 35% center !important; }
     }
-    .sim-mobile-device {
-      max-width: 414px !important;
-      border: 12px solid #222;
-      border-radius: 36px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.2);
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .sim-desktop-device {
-      max-width: 1280px !important;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-    }
-
-    /* 強制手機視圖樣式 */
-    .is-mobile-sim .desktop-nav { display: none !important; }
-    .is-mobile-sim .grid-cols-2, 
-    .is-mobile-sim .grid-cols-3, 
-    .is-mobile-sim .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
-    .is-mobile-sim .hero-flex { flex-direction: column !important; text-align: center !important; }
-    .is-mobile-sim .hero-title { font-size: 2.25rem !important; line-height: 2.5rem !important; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- 頂部工具列：模式切換與說明 -->
+  <!-- 頂部公告列 -->
   <div class="bg-black/90 border-b border-amber-500/30 text-xs py-2 px-4 sticky top-0 z-50 flex justify-between items-center">
-    <div class="flex items-center space-x-2 text-amber-300">
+    <div class="flex items-center space-x-2 text-amber-300 mx-auto sm:mx-0">
       <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="font-bold">【何老酥】官方正品線上旗艦館</span>
-    </div>
-    <div class="flex items-center space-x-1 sm:space-x-2">
-      <span class="text-gray-400 hidden sm:inline">檢視模式：</span>
-      <button onclick="window.setViewMode('auto')" id="btn-mode-auto" class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition">⚡ 自動</button>
-      <button onclick="window.setViewMode('mobile')" id="btn-mode-mobile" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">📱 手機版</button>
-      <button onclick="window.setViewMode('desktop')" id="btn-mode-desktop" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">💻 電腦版</button>
+      <span class="font-bold">【何老酥】官方正品線上旗艦館 · 滿 10 件即享免運費</span>
     </div>
   </div>
 
-  <!-- 網站外層包裹容器 -->
-  <div id="sim-container" class="sim-wrapper w-full flex-grow relative">
-
-    <!-- 主導覽列 -->
-    <header class="bg-black/80 backdrop-blur-md border-b border-amber-900/40 sticky top-9 z-40">
-      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center font-bold text-amber-400 text-xl font-serif-tc">酥</div>
-          <div>
-            <h1 class="font-bold text-amber-200 tracking-wider text-base sm:text-lg">何老酥 <span class="text-xs text-amber-400/80 font-normal">HE LAO SU</span></h1>
-            <p class="text-[10px] text-amber-400/60 tracking-widest">黑輪脆口酥 · 尊榮極致</p>
-          </div>
-        </div>
-
-        <nav class="desktop-nav hidden md:flex items-center space-x-6 text-sm text-amber-100/80 font-medium">
-          <a href="#hero" class="hover:text-amber-400 transition">首頁</a>
-          <a href="#pain-point" class="hover:text-amber-400 transition">痛點解決</a>
-          <a href="#luxury" class="hover:text-amber-400 transition">尊榮風味</a>
-          <a href="#products" class="hover:text-amber-400 transition">人氣商品</a>
-          <a href="#food-safety" class="hover:text-amber-400 transition">食安承諾</a>
-          <a href="#faq" class="hover:text-amber-400 transition">常見問答</a>
-        </nav>
-
-        <div class="flex items-center space-x-3">
-          <button onclick="window.openLookupModal()" class="px-3 py-1.5 text-xs rounded-full bg-zinc-800 border border-amber-500/40 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span>訂單查詢</span>
-          </button>
-          
-          <button onclick="window.toggleCart()" class="relative p-2 rounded-full bg-amber-500 text-black font-bold hover:bg-amber-400 transition flex items-center justify-center shadow-lg shadow-amber-500/20">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
-          </button>
+  <!-- 主導覽列 -->
+  <header class="bg-black/85 backdrop-blur-md border-b border-amber-900/40 sticky top-8 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2.5">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center font-bold text-amber-400 text-lg sm:text-xl font-serif-tc">酥</div>
+        <div>
+          <h1 class="font-bold text-amber-200 tracking-wider text-sm sm:text-lg">何老酥 <span class="text-[10px] sm:text-xs text-amber-400/80 font-normal">HE LAO SU</span></h1>
+          <p class="text-[9px] sm:text-[10px] text-amber-400/60 tracking-widest">黑輪脆口酥 · 尊榮極致</p>
         </div>
       </div>
-    </header>
 
-    <!-- 1. 首頁 Hero Section (將 banner.jpg 設為動態背景圖片) -->
-    <section id="hero" class="hero-bg-banner relative py-20 sm:py-28 px-4 overflow-hidden border-b border-amber-900/40">
-      <div class="max-w-6xl mx-auto relative z-10">
-        <div class="hero-flex flex flex-col md:flex-row items-center justify-between gap-10">
-          
-          <!-- 左側標題與文案 -->
-          <div class="flex-1 space-y-6 text-left">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold backdrop-blur-md">
-              <i class="fa-solid fa-fire text-amber-400"></i>
-              <span>IG、Threads 狂推！台式爆酥零食第一品牌</span>
-            </div>
-            
-            <h2 class="hero-title font-serif-tc text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gold-gradient drop-shadow-lg">
-              一口喀滋！<br>炸黑輪變身涮嘴極致酥！
-            </h2>
-            
-            <p class="text-zinc-200 text-sm sm:text-base leading-relaxed max-w-xl drop-shadow">
-              告別油膩與油耗味！嚴選台式傳統風味 × 獨家去油爆酥工法，6種爆款風味讓你一口接一口，隨時隨地低罪惡感爽嗑！
-            </p>
+      <nav class="hidden md:flex items-center space-x-6 text-sm text-amber-100/80 font-medium">
+        <a href="#hero" class="hover:text-amber-400 transition">首頁</a>
+        <a href="#pain-point" class="hover:text-amber-400 transition">痛點解決</a>
+        <a href="#luxury" class="hover:text-amber-400 transition">尊榮風味</a>
+        <a href="#products" class="hover:text-amber-400 transition">人氣商品</a>
+        <a href="#food-safety" class="hover:text-amber-400 transition">食安承諾</a>
+        <a href="#faq" class="hover:text-amber-400 transition">常見問答</a>
+      </nav>
 
-            <div class="flex flex-wrap gap-3 pt-2 text-xs text-amber-200">
-              <span class="px-2.5 py-1 rounded bg-black/70 border border-amber-500/30 backdrop-blur-sm"><i class="fa-solid fa-check text-amber-400 mr-1"></i>大成餐飲級優質油</span>
-              <span class="px-2.5 py-1 rounded bg-black/70 border border-amber-500/30 backdrop-blur-sm"><i class="fa-solid fa-check text-amber-400 mr-1"></i>BaP 檢驗合格未檢出</span>
-              <span class="px-2.5 py-1 rounded bg-black/70 border border-amber-500/30 backdrop-blur-sm"><i class="fa-solid fa-check text-amber-400 mr-1"></i>不沾手爆脆體驗</span>
-            </div>
-
-            <div class="pt-4 flex flex-col sm:flex-row gap-4">
-              <a href="#products" class="px-8 py-3.5 rounded-xl bg-gold-gradient text-black font-bold text-center text-base hover:brightness-110 transition shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-bag-shopping"></i> 搶先入手選購
-              </a>
-              <button onclick="window.openGiftModal()" class="px-6 py-3.5 rounded-xl bg-black/80 border border-amber-500/60 text-amber-300 font-bold text-center text-base hover:bg-amber-500/20 backdrop-blur-md transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-gift"></i> 尊榮禮盒組 ($588)
-              </button>
-            </div>
-          </div>
-
-          <!-- 右側奢華選購快速卡片 -->
-          <div class="w-full md:w-5/12">
-            <div class="gold-border-box rounded-2xl bg-dark-card p-6 relative overflow-hidden text-center space-y-4 shadow-2xl">
-              <div class="text-xs text-amber-400 tracking-widest font-serif-tc">HE LAO SU PREMIUM</div>
-              <h3 class="text-2xl font-serif-tc font-bold text-amber-100">何老酥黑輪脆口酥</h3>
-              
-              <div class="my-4 py-6 border-y border-amber-500/30 flex justify-around items-center">
-                <div class="text-center">
-                  <div class="text-amber-400 font-bold text-lg">【罐裝脆口酥】</div>
-                  <div class="text-xs text-zinc-400">6款經典風味任選</div>
-                  <div class="text-amber-300 font-bold mt-1">NT$ 150 起</div>
-                </div>
-                <div class="w-px h-10 bg-amber-500/30"></div>
-                <div class="text-center">
-                  <div class="text-amber-400 font-bold text-lg">【爆酥可頌條】</div>
-                  <div class="text-xs text-zinc-400">層層酥脆香濃</div>
-                  <div class="text-amber-300 font-bold mt-1">NT$ 220 起</div>
-                </div>
-              </div>
-
-              <button onclick="window.openGiftModal()" class="w-full py-2.5 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-bold hover:bg-amber-500/30 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-box-open"></i> 自訂雙罐禮盒配方 ($588)
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. 痛點共鳴與產品解決方案區 -->
-    <section id="pain-point" class="py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
-      <div class="max-w-5xl mx-auto space-y-12">
-        <div class="text-center space-y-3">
-          <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">REAL PAIN POINTS</span>
-          <h2 class="text-2xl sm:text-3xl font-serif-tc font-bold text-amber-100">你是否也常遇到這種零食崩潰時刻？</h2>
-          <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
-            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl"><i class="fa-solid fa-hand-droplet"></i></div>
-            <h3 class="font-bold text-lg text-zinc-200">傳統炸黑輪太油膩</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">買回來的炸黑輪紙袋全是油，吃兩口就膩，拿手機追劇還把螢幕弄得黏答答。</p>
-          </div>
-
-          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
-            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl"><i class="fa-solid fa-hourglass-end"></i></div>
-            <h3 class="font-bold text-lg text-zinc-200">放久變軟像咬橡皮筋</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">外送或外帶冷掉後口感大崩壞，完全失去剛炸好時的酥脆爽感。</p>
-          </div>
-
-          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
-            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl"><i class="fa-solid fa-shield-virus"></i></div>
-            <h3 class="font-bold text-lg text-zinc-200">擔心夜市回鍋油危害</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">想解饞又害怕路邊攤油質不佳，吃多給身體帶來沉重罪惡感與負擔。</p>
-          </div>
-        </div>
-
-        <!-- 解決方案 -->
-        <div class="gold-border-box p-8 rounded-2xl bg-dark-card text-center space-y-4">
-          <h3 class="text-2xl font-serif-tc font-bold text-gold-gradient">何老酥解法：極致去油爆酥工法</h3>
-          <p class="text-sm text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            我們透過獨家低溫慢焙與甩油技術，將傳統黑輪片轉化為「極致酥脆、保存期長、清爽不沾手」的餅乾級零食！讓你隨時隨地，想嗑就嗑！
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. 黑金尊榮奢華區塊 -->
-    <section id="luxury" class="py-20 px-4 bg-marble relative overflow-hidden border-b border-amber-900/30">
-      <div class="max-w-6xl mx-auto space-y-12">
-        <div class="text-center space-y-3">
-          <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">HERITAGE & CRAFT</span>
-          <h2 class="text-3xl sm:text-4xl font-serif-tc font-bold text-gold-gradient">尊榮之選 · 極致酥脆</h2>
-          <p class="text-xs text-amber-200/70">傳承古早好味道 · 成就非凡好口感</p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 text-center">
-          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
-            <div class="text-amber-400 font-bold text-base">原味</div>
-            <div class="text-[10px] text-zinc-400 mt-1">經典鮮香 越吃越涮嘴</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
-            <div class="text-amber-400 font-bold text-base">椒鹽</div>
-            <div class="text-[10px] text-zinc-400 mt-1">獨門胡椒 鹹香帶勁</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
-            <div class="text-amber-400 font-bold text-base">芥末</div>
-            <div class="text-[10px] text-zinc-400 mt-1">微嗆爽快 醒腦首選</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
-            <div class="text-amber-400 font-bold text-base">辣椒鹽</div>
-            <div class="text-[10px] text-zinc-400 mt-1">辛香香辣 下酒絕配</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
-            <div class="text-amber-400 font-bold text-base">梅粉</div>
-            <div class="text-[10px] text-zinc-400 mt-1">酸甜梅香 回甘滋味</div>
-          </div>
-          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
-            <div class="text-amber-400 font-bold text-base">檸檬</div>
-            <div class="text-[10px] text-zinc-400 mt-1">清新爽口 解膩無負擔</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. 人氣商品挑選與下單區 -->
-    <section id="products" class="py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
-      <div class="max-w-6xl mx-auto space-y-12">
-        <div class="text-center space-y-3">
-          <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">SELECT YOUR FAVORITES</span>
-          <h2 class="text-3xl font-serif-tc font-bold text-amber-100">人氣熱銷商品目錄</h2>
-          <p class="text-xs text-zinc-400">未滿 10 包/件需另加運費 NT$ 80，滿 10 包/件即享免運費優惠！</p>
-        </div>
-
-        <!-- 商品分區 A: 黑輪脆口酥罐裝系列 -->
-        <div class="space-y-6">
-          <h3 class="text-xl font-serif-tc font-bold text-amber-400 border-l-4 border-amber-500 pl-3">【黑輪脆口酥】罐裝系列 (單罐裝)</h3>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">原味 Original</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 150</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">經典古早味鮮魚香氣，極致酥脆咬下即化。</p>
-              </div>
-              <button onclick="window.addToCart('黑輪脆口酥-原味', 150)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">椒鹽 Pepper</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">特調白胡椒與香辛料，鹹香台味經典首選。</p>
-              </div>
-              <button onclick="window.addToCart('黑輪脆口酥-椒鹽', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">芥末 Mustard</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">微嗆芥末香精準衝鼻，過癮醒腦第一名。</p>
-              </div>
-              <button onclick="window.addToCart('黑輪脆口酥-芥末', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">辣椒鹽 Chili Salt</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">主廚研磨紅辣椒粉搭配鹽花，香辣下酒不可少。</p>
-              </div>
-              <button onclick="window.addToCart('黑輪脆口酥-辣椒鹽', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">梅粉 Plum Powder</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 170</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">台灣嚴選話梅粉，酸甜回甘，解膩絕配。</p>
-              </div>
-              <button onclick="window.addToCart('黑輪脆口酥-梅粉', 170)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">檸檬 Lemon</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">清新檸檬微酸果香，口感格外清爽令人上癮。</p>
-              </div>
-              <button onclick="window.addToCart('黑輪脆口酥-檸檬', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 商品分區 B: 爆酥可頌條新品系列 -->
-        <div class="space-y-6 pt-6">
-          <h3 class="text-xl font-serif-tc font-bold text-amber-400 border-l-4 border-amber-500 pl-3">【爆酥可頌條】新品系列</h3>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">可頌條-原味</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 220</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">層層酥脆，奶油香氣濃郁溢口。</p>
-              </div>
-              <button onclick="window.addToCart('爆酥可頌條-原味', 220)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">可頌條-梅粉</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 230</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">酸甜梅香與奶油派皮的頂級碰撞。</p>
-              </div>
-              <button onclick="window.addToCart('爆酥可頌條-梅粉', 230)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start">
-                  <h4 class="font-bold text-lg text-amber-200">可頌條-檸檬</h4>
-                  <span class="text-amber-400 font-bold text-lg">NT$ 230</span>
-                </div>
-                <p class="text-xs text-zinc-400 mt-2">清新檸檬果香，甜而不膩爽口升級。</p>
-              </div>
-              <button onclick="window.addToCart('爆酥可頌條-檸檬', 230)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-plus"></i> 加入購物車
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 商品分區 C: 黑輪餅乾禮盒 -->
-        <div class="gold-border-box rounded-2xl bg-dark-card p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div class="space-y-2 text-left">
-            <span class="px-3 py-1 rounded bg-red-600/30 text-red-300 text-xs font-bold border border-red-500/40">過年禮盒 / 節慶送禮首選</span>
-            <h3 class="text-2xl font-serif-tc font-bold text-gold-gradient">黑輪餅乾雙罐禮盒 ($588)</h3>
-            <p class="text-xs text-zinc-300">一盒內含兩罐精裝黑輪脆口酥，自由任意搭配喜歡的口味！</p>
-          </div>
-          <button onclick="window.openGiftModal()" class="px-8 py-3.5 rounded-xl bg-gold-gradient text-black font-bold hover:brightness-110 transition shrink-0 shadow-lg shadow-amber-500/20">
-            <i class="fa-solid fa-sliders"></i> 開啟自由搭配禮盒
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. 食安承諾與驗證卡片 -->
-    <section id="food-safety" class="py-16 px-4 bg-marble border-b border-amber-900/30">
-      <div class="max-w-5xl mx-auto space-y-10">
-        <div class="text-center space-y-3">
-          <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">FOOD SAFETY & QUALITY</span>
-          <h2 class="text-3xl font-serif-tc font-bold text-amber-100">安心油品 · 用心製作</h2>
-          <p class="text-xs text-zinc-400">守護您的每一口酥脆 · 食在安心品質把關</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 rounded-2xl bg-zinc-900/80 border border-emerald-500/30 space-y-4">
-            <div class="flex items-center space-x-3 text-emerald-400">
-              <i class="fa-solid fa-oil-well text-2xl"></i>
-              <h3 class="font-bold text-lg text-zinc-100">嚴選大成餐飲炸油 (18L)</h3>
-            </div>
-            <ul class="text-xs text-zinc-300 space-y-2 list-disc list-inside">
-              <li>採用二次精製軟棕油，油質極度穩定。</li>
-              <li>絕不含大豆沙拉油易氧化成分，適合高溫爆酥。</li>
-              <li>檢附維義事業股份有限公司油品來源證明文件。</li>
-            </ul>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-zinc-900/80 border border-emerald-500/30 space-y-4">
-            <div class="flex items-center space-x-3 text-emerald-400">
-              <i class="fa-solid fa-microscope text-2xl"></i>
-              <h3 class="font-bold text-lg text-zinc-100">第三方 BaP (苯駢芘) 檢驗合格</h3>
-            </div>
-            <p class="text-xs text-zinc-300 leading-relaxed">
-              自主送驗合格，茶酚花/苯駢芘 (BaP) 檢驗結果為 <span class="text-emerald-400 font-bold">未檢出 N.D.</span>（符合國家法規總量 2.0 μg/kg 嚴格標準）。
-            </p>
-            <div class="text-[10px] text-zinc-500">報告編號備查 · 食安承諾看得見</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. 常見問答 FAQ -->
-    <section id="faq" class="py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
-      <div class="max-w-4xl mx-auto space-y-8">
-        <div class="text-center space-y-3">
-          <h2 class="text-2xl font-serif-tc font-bold text-amber-100">常見問答 FAQ</h2>
-          <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
-            <h3 class="font-bold text-amber-300 text-sm">Q1：保存期限與保存方式？</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">未開啟常溫保存 60 天。開啟後請將瓶蓋鎖緊，置於陰涼乾燥處，避免陽光直射，建議兩週內食用完畢口感最佳。</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
-            <h3 class="font-bold text-amber-300 text-sm">Q2：下單後多久會出貨？運費怎麼計算？</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">訂單確認並完成轉帳後，約 2-4 個工作天內依序出貨。未滿 10 包/件運費 NT$ 80，購買滿 10 包/件即享全台超取/郵寄免運費！</p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
-            <h3 class="font-bold text-amber-300 text-sm">Q3：目前提供哪些付款與配送方式？</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed">目前全面採用「銀行轉帳 / ATM 匯款」預付款項。配送支援 7-ELEVEN 超商純取貨、全家超商純取貨，以及中華郵政郵寄到府。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 頁尾 Footer -->
-    <footer class="bg-black py-10 px-4 text-center border-t border-amber-900/40 text-xs text-zinc-500 space-y-4">
-      <div class="flex justify-center items-center space-x-2 text-amber-400/80">
-        <span class="font-serif-tc font-bold">何老酥黑輪脆口酥</span>
-        <span>·</span>
-        <span>何老酥國際貿易有限公司</span>
-      </div>
-      <p>© 2026 何老酥 HE LAO SU. All Rights Reserved.</p>
-      
-      <div class="pt-4">
-        <button onclick="window.openAdminModal()" class="px-3 py-1 rounded bg-zinc-900 text-zinc-600 hover:text-amber-400 border border-zinc-800 transition text-[10px]">
-          <i class="fa-solid fa-user-shield"></i> 店家接單管理後台
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button onclick="window.openLookupModal()" class="px-2.5 py-1.5 text-xs rounded-full bg-zinc-800 border border-amber-500/40 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>訂單查詢</span>
+        </button>
+        
+        <button onclick="window.toggleCart()" class="relative p-2 rounded-full bg-amber-500 text-black font-bold hover:bg-amber-400 transition flex items-center justify-center shadow-lg shadow-amber-500/20">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
         </button>
       </div>
-    </footer>
+    </div>
+  </header>
 
-  </div>
+  <!-- 1. 首頁 Hero Section -->
+  <section id="hero" class="hero-bg-banner relative py-10 sm:py-24 px-4 overflow-hidden border-b border-amber-900/40">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-10">
+        
+        <!-- 左側標題與文案 -->
+        <div class="flex-1 space-y-4 sm:space-y-6 text-left">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] sm:text-xs font-bold backdrop-blur-md">
+            <i class="fa-solid fa-fire text-amber-400"></i>
+            <span>IG、Threads 狂推！台式爆酥零食第一品牌</span>
+          </div>
+          
+          <h2 class="hero-title font-serif-tc text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-gold-gradient drop-shadow-lg">
+            一口喀滋！<br>炸黑輪變身涮嘴極致酥！
+          </h2>
+          
+          <p class="text-zinc-200 text-xs sm:text-base leading-relaxed max-w-xl drop-shadow">
+            告別油膩與油耗味！嚴選台式傳統風味 × 獨家去油爆酥工法，6種爆款風味讓你一口接一口，隨時隨地低罪惡感爽嗑！
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-1 text-[11px] sm:text-xs text-amber-200">
+            <span class="px-2.5 py-1 rounded bg-black/70 border border-amber-500/30 backdrop-blur-sm"><i class="fa-solid fa-check text-amber-400 mr-1"></i>大成餐飲級優質油</span>
+            <span class="px-2.5 py-1 rounded bg-black/70 border border-amber-500/30 backdrop-blur-sm"><i class="fa-solid fa-check text-amber-400 mr-1"></i>BaP 檢驗合格未檢出</span>
+            <span class="px-2.5 py-1 rounded bg-black/70 border border-amber-500/30 backdrop-blur-sm"><i class="fa-solid fa-check text-amber-400 mr-1"></i>不沾手爆脆體驗</span>
+          </div>
+
+          <div class="pt-2 sm:pt-4 flex flex-row gap-3">
+            <a href="#products" class="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-gold-gradient text-black font-bold text-center text-xs sm:text-base hover:brightness-110 transition shadow-xl shadow-amber-500/20 flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-bag-shopping"></i> 搶先入手選購
+            </a>
+            <button onclick="window.openGiftModal()" class="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-black/80 border border-amber-500/60 text-amber-300 font-bold text-center text-xs sm:text-base hover:bg-amber-500/20 backdrop-blur-md transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-gift"></i> 尊榮禮盒 ($588)
+            </button>
+          </div>
+        </div>
+
+        <!-- 右側奢華選購卡片 -->
+        <div class="w-full md:w-5/12">
+          <div class="gold-border-box rounded-2xl bg-dark-card p-4 sm:p-6 relative overflow-hidden text-center space-y-3 sm:space-y-4 shadow-2xl">
+            <div class="text-[10px] sm:text-xs text-amber-400 tracking-widest font-serif-tc">HE LAO SU PREMIUM</div>
+            <h3 class="text-lg sm:text-2xl font-serif-tc font-bold text-amber-100">何老酥黑輪脆口酥</h3>
+            
+            <div class="my-2 sm:my-4 py-3 sm:py-5 border-y border-amber-500/30 flex flex-row justify-around items-center">
+              <div class="text-center px-1">
+                <div class="text-amber-400 font-bold text-xs sm:text-base">【罐裝脆口酥】</div>
+                <div class="text-[10px] sm:text-xs text-zinc-400 mt-0.5">6款經典風味任選</div>
+                <div class="text-amber-300 font-bold text-xs sm:text-base mt-1">NT$ 150 起</div>
+              </div>
+              
+              <div class="w-px h-8 sm:h-10 bg-amber-500/30"></div>
+              
+              <div class="text-center px-1">
+                <div class="text-amber-400 font-bold text-xs sm:text-base">【爆酥可頌條】</div>
+                <div class="text-[10px] sm:text-xs text-zinc-400 mt-0.5">層層酥脆香濃</div>
+                <div class="text-amber-300 font-bold text-xs sm:text-base mt-1">NT$ 220 起</div>
+              </div>
+            </div>
+
+            <button onclick="window.openGiftModal()" class="w-full py-2.5 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-bold hover:bg-amber-500/30 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-box-open"></i> 自訂雙罐禮盒配方 ($588)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 痛點共鳴區 -->
+  <section id="pain-point" class="py-12 sm:py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
+    <div class="max-w-5xl mx-auto space-y-8 sm:space-y-12">
+      <div class="text-center space-y-2">
+        <span class="text-amber-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase">REAL PAIN POINTS</span>
+        <h2 class="text-xl sm:text-3xl font-serif-tc font-bold text-amber-100">你是否也常遇到這種零食崩潰時刻？</h2>
+        <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div class="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-2">
+          <div class="w-9 h-9 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-lg"><i class="fa-solid fa-hand-droplet"></i></div>
+          <h3 class="font-bold text-base text-zinc-200">傳統炸黑輪太油膩</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">買回來的炸黑輪紙袋全是油，吃兩口就膩，拿手機追劇還把螢幕弄得黏答答。</p>
+        </div>
+
+        <div class="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-2">
+          <div class="w-9 h-9 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-lg"><i class="fa-solid fa-hourglass-end"></i></div>
+          <h3 class="font-bold text-base text-zinc-200">放久變軟像咬橡皮筋</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">外送或外帶冷掉後口感大崩壞，完全失去剛炸好時的酥脆爽感。</p>
+        </div>
+
+        <div class="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-2">
+          <div class="w-9 h-9 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-lg"><i class="fa-solid fa-shield-virus"></i></div>
+          <h3 class="font-bold text-base text-zinc-200">擔心夜市回鍋油危害</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">想解饞又害怕路邊攤油質不佳，吃多給身體帶來沉重罪惡感與負擔。</p>
+        </div>
+      </div>
+
+      <div class="gold-border-box p-6 sm:p-8 rounded-2xl bg-dark-card text-center space-y-3">
+        <h3 class="text-lg sm:text-2xl font-serif-tc font-bold text-gold-gradient">何老酥解法：極致去油爆酥工法</h3>
+        <p class="text-xs sm:text-sm text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          我們透過獨家低溫慢焙與甩油技術，將傳統黑輪片轉化為「極致酥脆、保存期長、清爽不沾手」的餅乾級零食！讓你隨時隨地，想嗑就嗑！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 黑金尊榮奢華區塊 -->
+  <section id="luxury" class="py-12 sm:py-20 px-4 bg-marble relative overflow-hidden border-b border-amber-900/30">
+    <div class="max-w-6xl mx-auto space-y-8 sm:space-y-12">
+      <div class="text-center space-y-2">
+        <span class="text-amber-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase">HERITAGE & CRAFT</span>
+        <h2 class="text-2xl sm:text-4xl font-serif-tc font-bold text-gold-gradient">尊榮之選 · 極致酥脆</h2>
+        <p class="text-[11px] sm:text-xs text-amber-200/70">傳承古早好味道 · 成就非凡好口感</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-3 sm:gap-4 text-center">
+        <div class="p-3 sm:p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20">
+          <div class="text-amber-400 font-bold text-sm sm:text-base">原味</div>
+          <div class="text-[10px] text-zinc-400 mt-1">經典鮮香 越吃越涮嘴</div>
+        </div>
+        <div class="p-3 sm:p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20">
+          <div class="text-amber-400 font-bold text-sm sm:text-base">椒鹽</div>
+          <div class="text-[10px] text-zinc-400 mt-1">獨門胡椒 鹹香帶勁</div>
+        </div>
+        <div class="p-3 sm:p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20">
+          <div class="text-amber-400 font-bold text-sm sm:text-base">芥末</div>
+          <div class="text-[10px] text-zinc-400 mt-1">微嗆爽快 醒腦首選</div>
+        </div>
+        <div class="p-3 sm:p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20">
+          <div class="text-amber-400 font-bold text-sm sm:text-base">辣椒鹽</div>
+          <div class="text-[10px] text-zinc-400 mt-1">辛香香辣 下酒絕配</div>
+        </div>
+        <div class="p-3 sm:p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20">
+          <div class="text-amber-400 font-bold text-sm sm:text-base">梅粉</div>
+          <div class="text-[10px] text-zinc-400 mt-1">酸甜梅香 回甘滋味</div>
+        </div>
+        <div class="p-3 sm:p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20">
+          <div class="text-amber-400 font-bold text-sm sm:text-base">檸檬</div>
+          <div class="text-[10px] text-zinc-400 mt-1">清新爽口 解膩無負擔</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 人氣商品挑選區 -->
+  <section id="products" class="py-12 sm:py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
+    <div class="max-w-6xl mx-auto space-y-10 sm:space-y-12">
+      <div class="text-center space-y-2">
+        <span class="text-amber-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase">SELECT YOUR FAVORITES</span>
+        <h2 class="text-2xl sm:text-3xl font-serif-tc font-bold text-amber-100">人氣熱銷商品目錄</h2>
+        <p class="text-[11px] sm:text-xs text-zinc-400">未滿 10 包/件需另加運費 NT$ 80，滿 10 包/件即享免運費優惠！</p>
+      </div>
+
+      <!-- 商品分區 A: 黑輪脆口酥 -->
+      <div class="space-y-4">
+        <h3 class="text-lg sm:text-xl font-serif-tc font-bold text-amber-400 border-l-4 border-amber-500 pl-3">【黑輪脆口酥】罐裝系列 (單罐裝)</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">原味 Original</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 150</span>
+              </div>
+              <p class="text-xs text-zinc-400">經典古早味鮮魚香氣，極致酥脆咬下即化。</p>
+            </div>
+            <button onclick="window.addToCart('黑輪脆口酥-原味', 150)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">椒鹽 Pepper</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 160</span>
+              </div>
+              <p class="text-xs text-zinc-400">特調白胡椒與香辛料，鹹香台味經典首選。</p>
+            </div>
+            <button onclick="window.addToCart('黑輪脆口酥-椒鹽', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">芥末 Mustard</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 160</span>
+              </div>
+              <p class="text-xs text-zinc-400">微嗆芥末香精準衝鼻，過癮醒腦第一名。</p>
+            </div>
+            <button onclick="window.addToCart('黑輪脆口酥-芥末', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">辣椒鹽 Chili Salt</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 160</span>
+              </div>
+              <p class="text-xs text-zinc-400">主廚研磨紅辣椒粉搭配鹽花，香辣下酒不可少。</p>
+            </div>
+            <button onclick="window.addToCart('黑輪脆口酥-辣椒鹽', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">梅粉 Plum Powder</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 170</span>
+              </div>
+              <p class="text-xs text-zinc-400">台灣嚴選話梅粉，酸甜回甘，解膩絕配。</p>
+            </div>
+            <button onclick="window.addToCart('黑輪脆口酥-梅粉', 170)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">檸檬 Lemon</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 160</span>
+              </div>
+              <p class="text-xs text-zinc-400">清新檸檬微酸果香，口感格外清爽令人上癮。</p>
+            </div>
+            <button onclick="window.addToCart('黑輪脆口酥-檸檬', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品分區 B: 爆酥可頌條 -->
+      <div class="space-y-4 pt-4">
+        <h3 class="text-lg sm:text-xl font-serif-tc font-bold text-amber-400 border-l-4 border-amber-500 pl-3">【爆酥可頌條】新品系列</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">可頌條-原味</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 220</span>
+              </div>
+              <p class="text-xs text-zinc-400">層層酥脆，奶油香氣濃郁溢口。</p>
+            </div>
+            <button onclick="window.addToCart('爆酥可頌條-原味', 220)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">可頌條-梅粉</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 230</span>
+              </div>
+              <p class="text-xs text-zinc-400">酸甜梅香與奶油派皮的頂級碰撞。</p>
+            </div>
+            <button onclick="window.addToCart('爆酥可頌條-梅粉', 230)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+
+          <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-bold text-base sm:text-lg text-amber-200">可頌條-檸檬</h4>
+                <span class="text-amber-400 font-bold text-base sm:text-lg">NT$ 230</span>
+              </div>
+              <p class="text-xs text-zinc-400">清新檸檬果香，甜而不膩爽口升級。</p>
+            </div>
+            <button onclick="window.addToCart('爆酥可頌條-檸檬', 230)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs sm:text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-plus"></i> 加入購物車
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品分區 C: 黑輪餅乾禮盒 -->
+      <div class="gold-border-box rounded-2xl bg-dark-card p-5 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-center md:text-left">
+        <div class="space-y-1.5">
+          <span class="px-2.5 py-0.5 rounded bg-red-600/30 text-red-300 text-[11px] font-bold border border-red-500/40">過年禮盒 / 節慶送禮首選</span>
+          <h3 class="text-lg sm:text-2xl font-serif-tc font-bold text-gold-gradient">黑輪餅乾雙罐禮盒 ($588)</h3>
+          <p class="text-xs text-zinc-300">一盒內含兩罐精裝黑輪脆口酥，自由任意搭配喜歡的口味！</p>
+        </div>
+        <button onclick="window.openGiftModal()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gold-gradient text-black font-bold hover:brightness-110 transition shrink-0 text-xs sm:text-base shadow-lg shadow-amber-500/20">
+          <i class="fa-solid fa-sliders"></i> 開啟自由搭配禮盒
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 食安承諾 -->
+  <section id="food-safety" class="py-12 sm:py-16 px-4 bg-marble border-b border-amber-900/30">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="text-center space-y-2">
+        <span class="text-emerald-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase">FOOD SAFETY & QUALITY</span>
+        <h2 class="text-2xl sm:text-3xl font-serif-tc font-bold text-amber-100">安心油品 · 用心製作</h2>
+        <p class="text-[11px] sm:text-xs text-zinc-400">守護您的每一口酥脆 · 食在安心品質把關</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div class="p-5 rounded-2xl bg-zinc-900/80 border border-emerald-500/30 space-y-3">
+          <div class="flex items-center space-x-3 text-emerald-400">
+            <i class="fa-solid fa-oil-well text-xl"></i>
+            <h3 class="font-bold text-base text-zinc-100">嚴選大成餐飲炸油 (18L)</h3>
+          </div>
+          <ul class="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+            <li>採用二次精製軟棕油，油質極度穩定。</li>
+            <li>絕不含大豆沙拉油易氧化成分，適合高溫爆酥。</li>
+            <li>檢附維義事業股份有限公司油品來源證明文件。</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-zinc-900/80 border border-emerald-500/30 space-y-3">
+          <div class="flex items-center space-x-3 text-emerald-400">
+            <i class="fa-solid fa-microscope text-xl"></i>
+            <h3 class="font-bold text-base text-zinc-100">第三方 BaP (苯駢芘) 檢驗合格</h3>
+          </div>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            自主送驗合格，茶酚花/苯駢芘 (BaP) 檢驗結果為 <span class="text-emerald-400 font-bold">未檢出 N.D.</span>（符合國家法規總量 2.0 μg/kg 嚴格標準）。
+          </p>
+          <div class="text-[10px] text-zinc-500">報告編號備查 · 食安承諾看得見</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 常見問答 FAQ -->
+  <section id="faq" class="py-12 sm:py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
+    <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+      <div class="text-center space-y-2">
+        <h2 class="text-xl sm:text-2xl font-serif-tc font-bold text-amber-100">常見問答 FAQ</h2>
+        <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="space-y-3 sm:space-y-4">
+        <div class="p-4 sm:p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-1.5">
+          <h3 class="font-bold text-amber-300 text-xs sm:text-sm">Q1：保存期限與保存方式？</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">未開啟常溫保存 60 天。開啟後請將瓶蓋鎖緊，置於陰涼乾燥處，避免陽光直射，建議兩週內食用完畢口感最佳。</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-1.5">
+          <h3 class="font-bold text-amber-300 text-xs sm:text-sm">Q2：下單後多久會出貨？運費怎麼計算？</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">訂單確認並完成轉帳後，約 2-4 個工作天內依序出貨。未滿 10 包/件運費 NT$ 80，購買滿 10 包/件即享全台超取/郵寄免運費！</p>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-1.5">
+          <h3 class="font-bold text-amber-300 text-xs sm:text-sm">Q3：目前提供哪些付款與配送方式？</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">目前全面採用「銀行轉帳 / ATM 匯款」預付款項。配送支援 7-ELEVEN 超商純取貨、全家超商純取貨，以及中華郵政郵寄到府。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 Footer -->
+  <footer class="bg-black py-8 px-4 text-center border-t border-amber-900/40 text-xs text-zinc-500 space-y-3">
+    <div class="flex justify-center items-center space-x-2 text-amber-400/80">
+      <span class="font-serif-tc font-bold">何老酥黑輪脆口酥</span>
+      <span>·</span>
+      <span>何老酥國際貿易有限公司</span>
+    </div>
+    <p>© 2026 何老酥 HE LAO SU. All Rights Reserved.</p>
+    
+    <div class="pt-2">
+      <button onclick="window.openAdminModal()" class="px-3 py-1 rounded bg-zinc-900 text-zinc-600 hover:text-amber-400 border border-zinc-800 transition text-[10px]">
+        <i class="fa-solid fa-user-shield"></i> 店家接單管理後台
+      </button>
+    </div>
+  </footer>
 
   <!-- 購物車 Drawer -->
   <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-zinc-900 border-l border-amber-500/30 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl">
     <div class="p-4 bg-black border-b border-amber-500/30 flex justify-between items-center">
-      <h3 class="font-serif-tc font-bold text-amber-300 text-lg flex items-center gap-2">
+      <h3 class="font-serif-tc font-bold text-amber-300 text-base sm:text-lg flex items-center gap-2">
         <i class="fa-solid fa-cart-shopping"></i> 您的購物清單
       </h3>
       <button onclick="window.toggleCart()" class="text-zinc-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -521,20 +491,20 @@
     <div class="p-4 bg-zinc-950 border-t border-zinc-800 space-y-3">
       <div id="shipping-banner" class="text-xs text-amber-300/90 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20 text-center"></div>
 
-      <div class="flex justify-between items-center text-sm">
+      <div class="flex justify-between items-center text-xs sm:text-sm">
         <span class="text-zinc-400">小計：</span>
         <span id="cart-subtotal" class="font-bold text-zinc-200">NT$ 0</span>
       </div>
-      <div class="flex justify-between items-center text-sm">
+      <div class="flex justify-between items-center text-xs sm:text-sm">
         <span class="text-zinc-400">運費 (未滿10包加收80)：</span>
         <span id="cart-shipping" class="font-bold text-amber-400">NT$ 80</span>
       </div>
-      <div class="flex justify-between items-center text-base border-t border-zinc-800 pt-2">
+      <div class="flex justify-between items-center text-sm sm:text-base border-t border-zinc-800 pt-2">
         <span class="font-bold text-amber-200">總計應付金額：</span>
-        <span id="cart-total" class="font-bold text-gold-gradient text-xl">NT$ 80</span>
+        <span id="cart-total" class="font-bold text-gold-gradient text-lg sm:text-xl">NT$ 80</span>
       </div>
 
-      <button id="btn-goto-checkout" onclick="window.openCheckoutModal()" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-500/20">
+      <button id="btn-goto-checkout" onclick="window.openCheckoutModal()" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-xs sm:text-sm hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-500/20">
         前往填寫資料結帳
       </button>
     </div>
@@ -542,13 +512,13 @@
 
   <!-- 結帳 Modal -->
   <div id="checkout-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 space-y-5 text-left">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-4 text-left">
       <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-xl">填寫訂購與配送資料</h3>
+        <h3 class="font-serif-tc font-bold text-amber-300 text-lg sm:text-xl">填寫訂購與配送資料</h3>
         <button onclick="window.closeCheckoutModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <form id="checkout-form" onsubmit="window.handleFormSubmit(event)" class="space-y-4 text-xs">
+      <form id="checkout-form" onsubmit="window.handleFormSubmit(event)" class="space-y-3.5 text-xs">
         <div class="space-y-1">
           <label class="text-amber-200 font-bold">訂購人姓名 *</label>
           <input type="text" id="cust-name" required class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none" placeholder="請輸入姓名">
@@ -589,7 +559,7 @@
         </div>
 
         <div class="pt-2">
-          <button type="submit" id="btn-submit-order" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
+          <button type="submit" id="btn-submit-order" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-xs sm:text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
             確認送出訂單
           </button>
         </div>
@@ -599,46 +569,46 @@
 
   <!-- 下單成功 Modal -->
   <div id="success-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="gold-border-box bg-dark-card rounded-2xl max-w-md w-full p-6 text-center space-y-5">
-      <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 flex items-center justify-center text-3xl mx-auto">
+    <div class="gold-border-box bg-dark-card rounded-2xl max-w-md w-full p-5 sm:p-6 text-center space-y-4">
+      <div class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 flex items-center justify-center text-2xl mx-auto">
         <i class="fa-solid fa-check"></i>
       </div>
 
-      <h3 class="font-serif-tc font-bold text-amber-200 text-2xl">訂單建立成功！</h3>
+      <h3 class="font-serif-tc font-bold text-amber-200 text-xl sm:text-2xl">訂單建立成功！</h3>
       
       <div class="text-xs text-zinc-300 space-y-1">
         <div>您的訂單編號：<span id="res-order-id" class="font-mono text-amber-400 font-bold"></span></div>
         <div>資料已成功寫入雲端對帳系統！</div>
       </div>
 
-      <div class="p-4 rounded-xl bg-black/60 border border-amber-500/30 text-left space-y-2 text-xs">
+      <div class="p-3.5 rounded-xl bg-black/60 border border-amber-500/30 text-left space-y-1.5 text-xs">
         <div class="font-bold text-amber-300 border-b border-amber-500/20 pb-1">🏦 請完成轉帳匯款：</div>
         <div class="text-zinc-200">銀行代碼：<span class="text-amber-400 font-bold">822 (中國信託)</span></div>
         <div class="text-zinc-200">帳戶帳號：<span class="text-amber-400 font-bold font-mono">1234-5678-9012</span></div>
         <div class="text-zinc-200">戶名：<span class="text-amber-400 font-bold">何老酥國際貿易有限公司</span></div>
-        <div class="text-zinc-200">轉帳總金額：<span id="res-order-amount" class="text-gold-gradient font-bold text-base"></span></div>
+        <div class="text-zinc-200">轉帳總金額：<span id="res-order-amount" class="text-gold-gradient font-bold text-sm sm:text-base"></span></div>
       </div>
 
-      <div class="pt-2 space-y-2">
-        <a id="btn-send-line" href="#" target="_blank" class="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2">
+      <div class="pt-1 space-y-2">
+        <a id="btn-send-line" href="#" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold text-xs sm:text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2">
           <i class="fa-brands fa-line text-lg"></i> 一鍵點擊通知 LINE 官方客服對帳
         </a>
-        <button onclick="window.closeSuccessModal()" class="w-full py-2.5 rounded-xl bg-zinc-800 text-zinc-300 text-xs hover:bg-zinc-700 transition">
+        <button onclick="window.closeSuccessModal()" class="w-full py-2 rounded-xl bg-zinc-800 text-zinc-300 text-xs hover:bg-zinc-700 transition">
           關閉視窗
         </button>
       </div>
     </div>
   </div>
 
-  <!-- 禮盒搭配 Modal -->
+  <!-- 禮盒 Modal -->
   <div id="gift-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-6 space-y-5 text-left">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-5 sm:p-6 space-y-4 text-left">
       <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-xl">黑輪餅乾雙罐禮盒 ($588)</h3>
+        <h3 class="font-serif-tc font-bold text-amber-300 text-lg sm:text-xl">黑輪餅乾雙罐禮盒 ($588)</h3>
         <button onclick="window.closeGiftModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <div class="space-y-4 text-xs">
+      <div class="space-y-3 text-xs">
         <div class="space-y-1">
           <label class="text-amber-200 font-bold">選擇第一罐口味：</label>
           <select id="gift-item-1" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none">
@@ -663,7 +633,7 @@
           </select>
         </div>
 
-        <button onclick="window.addGiftToCart()" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
+        <button onclick="window.addGiftToCart()" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-xs sm:text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
           將禮盒組合加入購物車 ($588)
         </button>
       </div>
@@ -672,15 +642,15 @@
 
   <!-- 查單 Modal -->
   <div id="lookup-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-6 space-y-4 text-left">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-5 sm:p-6 space-y-4 text-left">
       <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-lg"><i class="fa-solid fa-magnifying-glass"></i> 顧客手機號碼快速查單</h3>
+        <h3 class="font-serif-tc font-bold text-amber-300 text-base sm:text-lg"><i class="fa-solid fa-magnifying-glass"></i> 顧客手機號碼快速查單</h3>
         <button onclick="window.closeLookupModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
       <div class="flex gap-2 text-xs">
         <input type="tel" id="lookup-phone" class="flex-grow px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none" placeholder="輸入下單手機號碼">
-        <button onclick="window.performLookup()" class="px-4 py-2 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition">搜尋</button>
+        <button onclick="window.performLookup()" class="px-3.5 py-2 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition">搜尋</button>
       </div>
 
       <div id="lookup-result" class="text-xs text-zinc-300 max-h-60 overflow-y-auto space-y-2 pt-2"></div>
@@ -689,9 +659,9 @@
 
   <!-- 店家後台 Modal -->
   <div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full p-6 space-y-4 text-left">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full p-5 sm:p-6 space-y-4 text-left">
       <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-lg"><i class="fa-solid fa-user-shield"></i> 店家接單與對帳管理後台</h3>
+        <h3 class="font-serif-tc font-bold text-amber-300 text-base sm:text-lg"><i class="fa-solid fa-user-shield"></i> 店家接單與對帳管理後台</h3>
         <button onclick="window.closeAdminModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
@@ -717,26 +687,6 @@
   <script>
     const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx0djWyFm0v2m-IAsWYeqDs1SmIL_W0yuawKZuJADYKOQieLwCg9x6g7DlQ1k4ssnOz/exec";
     window.cart = [];
-
-    window.setViewMode = function(mode) {
-      const container = document.getElementById('sim-container');
-      const btnAuto = document.getElementById('btn-mode-auto');
-      const btnMobile = document.getElementById('btn-mode-mobile');
-      const btnDesktop = document.getElementById('btn-mode-desktop');
-
-      container.classList.remove('sim-mobile-device', 'sim-desktop-device', 'is-mobile-sim');
-      btnAuto.className = btnMobile.className = btnDesktop.className = "px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition";
-
-      if (mode === 'mobile') {
-        container.classList.add('sim-mobile-device', 'is-mobile-sim');
-        btnMobile.className = "px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition";
-      } else if (mode === 'desktop') {
-        container.classList.add('sim-desktop-device');
-        btnDesktop.className = "px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition";
-      } else {
-        btnAuto.className = "px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition";
-      }
-    };
 
     window.addToCart = function(name, price) {
       const existing = window.cart.find(i => i.name === name);
