@@ -48,7 +48,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.05);
     }
 
-    /* 檢視模式模擬 (電腦/手機) */
+    /* 檢視模式 (電腦/手機) */
     .sim-wrapper {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       margin: 0 auto;
@@ -66,7 +66,7 @@
       border: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    /* 強制手機模擬視圖樣式 */
+    /* 強制手機視圖樣式 */
     .is-mobile-sim .desktop-nav { display: none !important; }
     .is-mobile-sim .mobile-menu-btn { display: block !important; }
     .is-mobile-sim .grid-cols-2, 
@@ -87,8 +87,8 @@
     <div class="flex items-center space-x-1 sm:space-x-2">
       <span class="text-gray-400 hidden sm:inline">檢視模式：</span>
       <button onclick="window.setViewMode('auto')" id="btn-mode-auto" class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition">⚡ 自動</button>
-      <button onclick="window.setViewMode('mobile')" id="btn-mode-mobile" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">📱 模擬手機</button>
-      <button onclick="window.setViewMode('desktop')" id="btn-mode-desktop" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">💻 模擬電腦</button>
+      <button onclick="window.setViewMode('mobile')" id="btn-mode-mobile" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">📱 手機版</button>
+      <button onclick="window.setViewMode('desktop')" id="btn-mode-desktop" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">💻 電腦版</button>
     </div>
   </div>
 
@@ -734,12 +734,12 @@
   <!-- ==================== JavaScript 全域邏輯與串接 ==================== -->
   <script>
     // ⚠️ 請將下方的網址替換為您部署 Google Apps Script 產生的網頁應用程式 URL
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzz--YOUR-REAL-GAS-ID--/exec";
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx0djWyFm0v2m-IAsWYeqDs1SmIL_W0yuawKZuJADYKOQieLwCg9x6g7DlQ1k4ssnOz/exec";
 
     // 購物車全域狀態
     window.cart = [];
 
-    // 1. 檢視模式切換 (自動 / 模擬手機 / 模擬電腦)
+    // 1. 檢視模式切換 (自動 / 手機版 / 電腦版)
     window.setViewMode = function(mode) {
       const container = document.getElementById('sim-container');
       const btnAuto = document.getElementById('btn-mode-auto');
