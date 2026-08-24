@@ -852,7 +852,7 @@
     window.openLookupModal = function() { document.getElementById('lookup-modal').classList.remove('hidden'); };
     window.closeLookupModal = function() { document.getElementById('lookup-modal').classList.add('hidden'); };
 
-    window.performLookup = async function() {
+window.performLookup = async function() {
       const phone = document.getElementById('lookup-phone').value.trim();
       const resContainer = document.getElementById('lookup-result');
       if (!phone) return alert('請輸入手機號碼');
@@ -861,6 +861,7 @@
 
       try {
         const res = await callGasApi('lookupOrder', { phone: phone });
+        console.log("查單回應結果：", res); // 打開 F12 主控台可以看詳細資料
 
         if (res.success && res.orders && res.orders.length > 0) {
           resContainer.innerHTML = '';
@@ -879,14 +880,15 @@
             resContainer.appendChild(div);
           });
         } else {
-          resContainer.innerText = "未找到與該手機號碼相關的訂單紀錄。";
+          resContainer.innerText = "未找到與該手機號碼相關的訂單紀錄。(提示：請確認試算表內是否有該電話)";
         }
       } catch (err) {
         console.error("查單失敗詳情：", err);
-        resContainer.innerText = "查詢失敗，請稍後再試。";
+        resContainer.innerText = "查詢連線失敗，請按 F12 查看主控台錯誤。";
+        alert("查單發生異常: " + err.toString());
       }
     };
-
+	
     window.openAdminModal = function() { document.getElementById('admin-modal').classList.remove('hidden'); };
     window.closeAdminModal = function() { document.getElementById('admin-modal').classList.add('hidden'); };
 
