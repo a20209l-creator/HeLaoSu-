@@ -580,10 +580,17 @@
       </div>
 
       <div class="pt-1 space-y-2">
-        <a id="btn-send-line" href="#" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold text-xs sm:text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2">
-          <i class="fa-brands fa-line text-lg"></i> 一鍵點擊通知 LINE 官方客服對帳
+        <!-- 第一步：加入 LINE 官方帳號 -->
+        <a href="https://line.me/R/ti/p/@959dadcl" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs sm:text-sm hover:bg-emerald-500 transition flex items-center justify-center gap-2 shadow-md">
+          <i class="fa-brands fa-line text-lg"></i> 第一步：點此加入 LINE 官方帳號
         </a>
-        <button onclick="window.closeSuccessModal()" class="w-full py-2 rounded-xl bg-zinc-800 text-zinc-300 text-xs hover:bg-zinc-700 transition">
+
+        <!-- 第二步：一鍵傳送對帳訊息 -->
+        <a id="btn-send-line" href="#" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold text-xs sm:text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2 shadow-md">
+          <i class="fa-brands fa-line text-lg"></i> 第二步：一鍵傳送訂單與對帳資訊
+        </a>
+
+        <button onclick="window.closeSuccessModal()" class="w-full py-2 rounded-xl bg-zinc-800 text-zinc-300 text-xs hover:bg-zinc-700 transition mt-2">
           關閉視窗
         </button>
       </div>
@@ -852,7 +859,7 @@
     window.openLookupModal = function() { document.getElementById('lookup-modal').classList.remove('hidden'); };
     window.closeLookupModal = function() { document.getElementById('lookup-modal').classList.add('hidden'); };
 
-window.performLookup = async function() {
+    window.performLookup = async function() {
       const phone = document.getElementById('lookup-phone').value.trim();
       const resContainer = document.getElementById('lookup-result');
       if (!phone) return alert('請輸入手機號碼');
@@ -861,7 +868,7 @@ window.performLookup = async function() {
 
       try {
         const res = await callGasApi('lookupOrder', { phone: phone });
-        console.log("查單回應結果：", res); // 打開 F12 主控台可以看詳細資料
+        console.log("查單回應結果：", res);
 
         if (res.success && res.orders && res.orders.length > 0) {
           resContainer.innerHTML = '';
@@ -888,7 +895,7 @@ window.performLookup = async function() {
         alert("查單發生異常: " + err.toString());
       }
     };
-	
+    
     window.openAdminModal = function() { document.getElementById('admin-modal').classList.remove('hidden'); };
     window.closeAdminModal = function() { document.getElementById('admin-modal').classList.add('hidden'); };
 
