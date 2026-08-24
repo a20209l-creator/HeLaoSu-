@@ -1,956 +1,1063 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>何老酥 - 黑輪脆口酥官方購物網站 | 尊榮之選 · 極致酥脆</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>何老酥 - 黑輪脆口酥官方購物網站 | 尊榮之選 · 極致酥脆</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap');
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            gold: '#D4AF37',
-                            lightGold: '#F3E5AB',
-                            darkGold: '#AA7C11',
-                            amber: '#FFBF00',
-                            charcoal: '#121212',
-                            darkWood: '#2B1B17',
-                            marbleDark: '#1A1A1A',
-                            accentRed: '#C0392B'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif']
-                    }
-                }
-            }
-        }
-    </script>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #0d0d0d;
+      color: #f3f3f3;
+      overflow-x: hidden;
+    }
+    
+    .font-serif-tc { font-family: 'Noto Serif TC', serif; }
+    
+    /* 奢華黑金漸層與背景 */
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #ffe082 0%, #d4af37 50%, #e6c687 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .bg-dark-card {
+      background: rgba(26, 24, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .bg-marble {
+      background: radial-gradient(circle at 50% 30%, #1c1a17 0%, #0c0b0a 100%);
+    }
 
-    <style>
-        .bg-black-marble {
-            background-color: #121212;
-            background-image: 
-                radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(10,10,10,0.98) 100%);
-        }
-        .gold-border-glow {
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-        }
-        .gold-border-glow:hover {
-            border: 1px solid rgba(212, 175, 55, 0.8);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-        }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF 0%, #F3E5AB 40%, #D4AF37 70%, #AA7C11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-btn-gradient {
-            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
-        }
-        .gold-btn-gradient:hover {
-            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
-        }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #121212; }
-        ::-webkit-scrollbar-thumb { background: #443311; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+    /* 光暈與金紋樣式 */
+    .bokeh-light {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+    .gold-border-box {
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.05);
+    }
 
-        /* MOBILE SIMULATOR OVERRIDES */
-        #app-view-container.is-mobile-sim {
-            max-width: 390px !important;
-            width: 100% !important;
-            margin: 1.5rem auto !important;
-            border: 8px solid #292524 !important;
-            border-radius: 36px !important;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
-            overflow: hidden !important;
-        }
-        #app-view-container.is-mobile-sim .nav-desktop-links { display: none !important; }
-        #app-view-container.is-mobile-sim .flex-mobile-col { flex-direction: column !important; }
-        #app-view-container.is-mobile-sim .grid-mobile-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
-        #app-view-container.is-mobile-sim .grid-mobile-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-        #app-view-container.is-mobile-sim h1 { font-size: 1.75rem !important; line-height: 2.25rem !important; }
-        #app-view-container.is-mobile-sim h2 { font-size: 1.35rem !important; line-height: 1.8rem !important; }
-    </style>
+    /* 檢視模式模擬 (電腦/手機) */
+    .sim-wrapper {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0 auto;
+    }
+    .sim-mobile-device {
+      max-width: 414px !important;
+      border: 12px solid #222;
+      border-radius: 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.2);
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .sim-desktop-device {
+      max-width: 1280px !important;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    /* 強制手機模擬視圖樣式 */
+    .is-mobile-sim .desktop-nav { display: none !important; }
+    .is-mobile-sim .mobile-menu-btn { display: block !important; }
+    .is-mobile-sim .grid-cols-2, 
+    .is-mobile-sim .grid-cols-3, 
+    .is-mobile-sim .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+    .is-mobile-sim .hero-flex { flex-direction: column !important; text-align: center !important; }
+    .is-mobile-sim .hero-title { font-size: 2.25rem !important; line-height: 2.5rem !important; }
+  </style>
 </head>
-<body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500 selection:text-black">
+<body class="min-h-screen flex flex-col">
 
-    <header class="bg-stone-900 border-b border-amber-500/30 py-2.5 px-4 sticky top-0 z-50 shadow-md backdrop-blur-md bg-stone-900/90">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center space-x-2">
-                <span class="inline-block w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
-                <span class="text-xs sm:text-sm font-bold text-amber-200 tracking-wider">【何老酥】官方正品線上旗艦館</span>
-            </div>
-            <!-- Mode Switch Buttons -->
-            <div class="flex items-center space-x-1 bg-stone-950/80 p-1 rounded-lg border border-amber-500/20 text-xs">
-                <span class="text-stone-400 px-2 hidden sm:inline">檢視模式:</span>
-                <button id="btn-mode-auto" onclick="setViewMode('auto')" class="px-2.5 py-1 rounded-md bg-stone-800 text-amber-300 font-bold transition flex items-center gap-1">
-                    <i class="fa-solid fa-laptop-mobile text-amber-400"></i>⚡ 自動
-                </button>
-                <button id="btn-mode-mobile" onclick="setViewMode('mobile')" class="px-2.5 py-1 rounded-md text-stone-300 hover:text-amber-300 transition flex items-center gap-1">
-                    <i class="fa-solid fa-mobile-screen"></i>📱 手機版
-                </button>
-                <button id="btn-mode-desktop" onclick="setViewMode('desktop')" class="px-2.5 py-1 rounded-md text-stone-300 hover:text-amber-300 transition flex items-center gap-1">
-                    <i class="fa-solid fa-desktop"></i>💻 電腦版
-                </button>
-            </div>
+  <!-- 頂部工具列：模式切換與說明 -->
+  <div class="bg-black/90 border-b border-amber-500/30 text-xs py-2 px-4 sticky top-0 z-50 flex justify-between items-center">
+    <div class="flex items-center space-x-2 text-amber-300">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="font-bold">【何老酥】官方正品線上旗艦館</span>
+    </div>
+    <div class="flex items-center space-x-1 sm:space-x-2">
+      <span class="text-gray-400 hidden sm:inline">檢視模式：</span>
+      <button onclick="window.setViewMode('auto')" id="btn-mode-auto" class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition">⚡ 自動</button>
+      <button onclick="window.setViewMode('mobile')" id="btn-mode-mobile" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">📱 模擬手機</button>
+      <button onclick="window.setViewMode('desktop')" id="btn-mode-desktop" class="px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition">💻 模擬電腦</button>
+    </div>
+  </div>
+
+  <!-- 網站外層包裹容器 -->
+  <div id="sim-container" class="sim-wrapper w-full flex-grow relative">
+
+    <!-- 主導覽列 -->
+    <header class="bg-black/80 backdrop-blur-md border-b border-amber-900/40 sticky top-9 z-40">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center font-bold text-amber-400 text-xl font-serif-tc">酥</div>
+          <div>
+            <h1 class="font-bold text-amber-200 tracking-wider text-base sm:text-lg">何老酥 <span class="text-xs text-amber-400/80 font-normal">HE LAO SU</span></h1>
+            <p class="text-[10px] text-amber-400/60 tracking-widest">黑輪脆口酥 · 尊榮極致</p>
+          </div>
         </div>
-    </header>
 
-    <div id="app-view-container" class="w-full mx-auto transition-all duration-300 bg-stone-950">
-
-        <nav class="bg-stone-900/95 border-b border-amber-900/40 sticky top-10 z-40 backdrop-blur-md">
-            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-                <a href="#" class="flex items-center space-x-3 group shrink-0">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 p-0.5 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
-                        <div class="w-full h-full bg-stone-900 rounded-full flex items-center justify-center border border-amber-300/40">
-                            <span class="text-amber-400 font-black text-xl">酥</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="text-base sm:text-lg font-black tracking-wider gold-gradient-text">何老酥 HE LAO SU</div>
-                        <div class="text-[10px] text-amber-300/70 tracking-widest uppercase">黑輪脆口酥 · 尊榮極致</div>
-                    </div>
-                </a>
-
-                <div class="nav-desktop-links hidden md:flex items-center space-x-6 text-sm font-medium text-stone-300">
-                    <a href="#hero" class="hover:text-amber-400 transition">首頁</a>
-                    <a href="#pain-points" class="hover:text-amber-400 transition">痛點解決</a>
-                    <a href="#luxury-showcase" class="hover:text-amber-400 transition">尊榮風味</a>
-                    <a href="#products" class="hover:text-amber-400 transition">人氣商品</a>
-                    <a href="#food-safety" class="hover:text-amber-400 transition">食安承諾</a>
-                    <a href="#faq" class="hover:text-amber-400 transition">常見問答</a>
-                </div>
-
-                <div class="flex items-center space-x-2">
-                    <button onclick="openOrderLookupModal()" class="bg-stone-800 hover:bg-stone-700 text-amber-300 border border-amber-500/30 px-3 py-1.5 sm:py-2 rounded-full flex items-center space-x-1.5 text-xs sm:text-sm font-bold transition">
-                        <i class="fa-solid fa-magnifying-glass text-amber-400"></i>
-                        <span class="hidden sm:inline">訂單查詢</span>
-                    </button>
-
-                    <button onclick="toggleCart()" class="relative bg-amber-500/10 border border-amber-500/50 hover:bg-amber-500/20 text-amber-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex items-center space-x-2 text-xs sm:text-sm font-bold transition shrink-0">
-                        <i class="fa-solid fa-basket-shopping text-amber-400"></i>
-                        <span>購物車</span>
-                        <span id="cart-count-badge" class="bg-amber-500 text-stone-950 font-black text-xs px-2 py-0.5 rounded-full">0</span>
-                    </button>
-                </div>
-            </div>
+        <nav class="desktop-nav hidden md:flex items-center space-x-6 text-sm text-amber-100/80 font-medium">
+          <a href="#hero" class="hover:text-amber-400 transition">首頁</a>
+          <a href="#pain-point" class="hover:text-amber-400 transition">痛點解決</a>
+          <a href="#luxury" class="hover:text-amber-400 transition">尊榮風味</a>
+          <a href="#products" class="hover:text-amber-400 transition">人氣商品</a>
+          <a href="#food-safety" class="hover:text-amber-400 transition">食安承諾</a>
+          <a href="#faq" class="hover:text-amber-400 transition">常見問答</a>
         </nav>
 
-        <section id="hero" class="relative overflow-hidden bg-black-marble py-12 lg:py-20 border-b border-amber-900/30">
-            <div class="max-w-6xl mx-auto px-4 relative z-10 flex flex-col lg:flex-row flex-mobile-col items-center gap-8 lg:gap-12">
-                <div class="flex-1 text-center lg:text-left space-y-5">
-                    <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full">
-                        <i class="fa-solid fa-fire text-amber-400 animate-bounce"></i>
-                        <span>IG、Threads 狂推！台式爆酥零食第一品牌</span>
-                    </div>
-
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
-                        <span class="block text-stone-100">一口喀滋！</span>
-                        <span class="gold-gradient-text">炸黑輪變身涮嘴極致酥！</span>
-                    </h1>
-
-                    <p class="text-stone-300 text-sm sm:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                        告別油膩與油耗味！嚴選台式傳統風味 × 獨家去油爆酥工法，6種爆款風味讓你一口接一口，隨時隨地低罪惡感爽嗑！
-                    </p>
-
-                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 text-xs font-semibold text-amber-200 pt-1">
-                        <span class="bg-stone-900 border border-amber-500/30 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-400"></i> 大成餐飲級優質炸油</span>
-                        <span class="bg-stone-900 border border-amber-500/30 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5"><i class="fa-solid fa-square-check text-amber-400"></i> BaP 檢驗合格未檢出</span>
-                        <span class="bg-stone-900 border border-amber-500/30 px-2.5 py-1.5 rounded-lg flex items-center gap-1.5"><i class="fa-solid fa-truck-fast text-amber-400"></i> 滿10包即享免運</span>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-3">
-                        <a href="#products" class="w-full sm:w-auto gold-btn-gradient text-stone-950 font-black px-6 py-3.5 rounded-xl shadow-xl shadow-amber-500/20 hover:scale-105 transition flex items-center justify-center gap-2 text-base sm:text-lg">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span>搶先入手選購</span>
-                        </a>
-                        <a href="#giftbox" class="w-full sm:w-auto bg-stone-900 border border-amber-400/50 hover:border-amber-400 text-amber-300 font-bold px-5 py-3.5 rounded-xl transition flex items-center justify-center gap-2 text-sm sm:text-base">
-                            <i class="fa-solid fa-gift text-amber-400"></i>
-                            <span>尊榮禮盒組 ($588)</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex-1 w-full max-w-lg relative">
-                    <div class="relative bg-gradient-to-br from-amber-500/20 via-stone-900 to-amber-900/40 p-2 rounded-3xl border border-amber-500/40 shadow-2xl">
-                        <div class="bg-stone-900 rounded-2xl p-5 sm:p-6 border border-amber-500/20 text-center space-y-4">
-                            <div class="text-amber-400 font-serif italic text-xs sm:text-sm tracking-widest">HE LAO SU PREMIUM</div>
-                            <h3 class="text-xl sm:text-2xl font-bold gold-gradient-text">何老酥黑輪脆口酥</h3>
-                            
-                            <div class="grid grid-cols-2 gap-3 py-2">
-                                <div class="bg-stone-950 p-3 rounded-xl border border-amber-500/20 text-left">
-                                    <div class="text-amber-400 font-bold text-xs sm:text-sm">【罐裝脆口酥】</div>
-                                    <div class="text-stone-400 text-[11px]">6款經典風味任選</div>
-                                    <div class="text-amber-300 font-black mt-1 text-xs sm:text-sm">NT$ 150 起</div>
-                                </div>
-                                <div class="bg-stone-950 p-3 rounded-xl border border-amber-500/20 text-left">
-                                    <div class="text-amber-400 font-bold text-xs sm:text-sm">【爆酥可頌條】</div>
-                                    <div class="text-stone-400 text-[11px]">層層酥脆香濃</div>
-                                    <div class="text-amber-300 font-black mt-1 text-xs sm:text-sm">NT$ 220 起</div>
-                                </div>
-                            </div>
-
-                            <button onclick="openGiftBoxModal()" class="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/50 font-bold py-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-box-open"></i> 自訂雙罐禮盒配方 ($588)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pain-points" class="py-12 sm:py-16 bg-stone-900 border-b border-amber-900/20">
-            <div class="max-w-5xl mx-auto px-4 text-center">
-                <div class="inline-block bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded-full mb-3">PAIN POINTS</div>
-                <h2 class="text-2xl sm:text-4xl font-black text-stone-100 mb-2">「好想吃鹹酥雞炸黑輪... 但想到這些就退縮了？」</h2>
-                <p class="text-stone-400 text-xs sm:text-base max-w-2xl mx-auto mb-8 sm:mb-10">深夜追劇或辦公室下午茶，傳統炸物總是讓你又愛又恨嗎？</p>
-
-                <div class="grid md:grid-cols-3 grid-mobile-1 gap-5 text-left">
-                    <div class="bg-stone-950 p-5 sm:p-6 rounded-2xl border border-stone-800 hover:border-red-500/40 transition">
-                        <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-lg font-bold mb-3">❌</div>
-                        <h3 class="text-base sm:text-lg font-bold text-stone-200 mb-2">手油到無法滑手機</h3>
-                        <p class="text-stone-400 text-xs sm:text-sm leading-relaxed">追劇正精彩，拿起傳統炸黑輪手指滿是油脂，滑螢幕全是油漬，洗手洗到懷疑人生！</p>
-                    </div>
-
-                    <div class="bg-stone-950 p-5 sm:p-6 rounded-2xl border border-stone-800 hover:border-red-500/40 transition">
-                        <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-lg font-bold mb-3">❌</div>
-                        <h3 class="text-base sm:text-lg font-bold text-stone-200 mb-2">外送冷掉變像皮筋</h3>
-                        <p class="text-stone-400 text-xs sm:text-sm leading-relaxed">外送買回來的炸黑輪稍微放一下就變軟變油，滿嘴油耗味，咬不動又難以下嚥！</p>
-                    </div>
-
-                    <div class="bg-stone-950 p-5 sm:p-6 rounded-2xl border border-stone-800 hover:border-red-500/40 transition">
-                        <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-lg font-bold mb-3">❌</div>
-                        <h3 class="text-base sm:text-lg font-bold text-stone-200 mb-2">熱量負擔重又怕食安</h3>
-                        <p class="text-stone-400 text-xs sm:text-sm leading-relaxed">想嗑零食解饞，又擔心路邊攤店家使用品質不明的回鍋油，吃完罪惡感爆表！</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="luxury-showcase" class="py-12 sm:py-20 bg-black-marble relative overflow-hidden border-b border-amber-900/30">
-            <div class="max-w-6xl mx-auto px-4 relative z-10">
-                <div class="text-center space-y-2 mb-10">
-                    <div class="inline-flex items-center gap-2 border-y border-amber-500/50 py-1 px-4 text-amber-400 text-[11px] font-serif tracking-widest uppercase">PREMIUM QUALITY & CRAFTSMANSHIP</div>
-                    <h2 class="text-2xl sm:text-5xl font-black gold-gradient-text tracking-wide">尊榮之選 · 極致酥脆</h2>
-                    <p class="text-stone-400 text-xs sm:text-base max-w-2xl mx-auto font-light">傳承古早好味道 · 成就非凡好口感</p>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 grid-mobile-2 gap-3 sm:gap-4 mb-10">
-                    <div class="bg-stone-900/80 border border-amber-500/30 p-4 rounded-xl text-center gold-border-glow">
-                        <div class="text-amber-400 text-xl mb-1"><i class="fa-solid fa-hands-holding"></i></div>
-                        <div class="font-bold text-amber-200 text-xs sm:text-sm">手工製作 匠心工藝</div>
-                    </div>
-                    <div class="bg-stone-900/80 border border-amber-500/30 p-4 rounded-xl text-center gold-border-glow">
-                        <div class="text-amber-400 text-xl mb-1"><i class="fa-solid fa-wheat-awn"></i></div>
-                        <div class="font-bold text-amber-200 text-xs sm:text-sm">嚴選食材 安心美味</div>
-                    </div>
-                    <div class="bg-stone-900/80 border border-amber-500/30 p-4 rounded-xl text-center gold-border-glow">
-                        <div class="text-amber-400 text-xl mb-1"><i class="fa-solid fa-bolt"></i></div>
-                        <div class="font-bold text-amber-200 text-xs sm:text-sm">酥脆爽口 層次豐富</div>
-                    </div>
-                    <div class="bg-stone-900/80 border border-amber-500/30 p-4 rounded-xl text-center gold-border-glow">
-                        <div class="text-amber-400 text-xl mb-1"><i class="fa-solid fa-crown"></i></div>
-                        <div class="font-bold text-amber-200 text-xs sm:text-sm">五星美味 尊榮享受</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="products" class="py-12 sm:py-16 bg-stone-900 border-b border-amber-900/20">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center space-y-2 mb-10">
-                    <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">SHOP ONLINE</span>
-                    <h2 class="text-2xl sm:text-4xl font-black text-stone-100">人氣必買商品選購</h2>
-                    <p class="text-stone-400 text-xs sm:text-sm">挑選你最想吃的口味，滿 10 包（件）即享免運優惠！</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-mobile-1 gap-4 sm:gap-6 mb-10">
-                    <div class="bg-stone-950 border border-stone-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-amber-500/50 transition">
-                        <div>
-                            <div class="flex justify-between items-start mb-1.5"><h4 class="text-base sm:text-lg font-bold text-stone-100">原味黑輪脆口酥</h4><span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">熱銷 NO.1</span></div>
-                            <p class="text-stone-400 text-xs mb-3">純粹魚漿鮮香，無複雜調味，品嚐最單純的香酥爽脆感。</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-3 border-t border-stone-800">
-                            <span class="text-lg sm:text-xl font-black text-amber-400">NT$ 150</span>
-                            <button onclick="addToCart('原味黑輪脆口酥', 150)" class="gold-btn-gradient text-stone-950 font-bold px-3.5 py-1.5 sm:py-2 rounded-xl text-xs hover:scale-105 transition">+ 加入購物車</button>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-950 border border-stone-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-amber-500/50 transition">
-                        <div>
-                            <div class="flex justify-between items-start mb-1.5"><h4 class="text-base sm:text-lg font-bold text-stone-100">椒鹽黑輪脆口酥</h4><span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">下酒必備</span></div>
-                            <p class="text-stone-400 text-xs mb-3">特調靈魂胡椒香，鹹香帶勁，配冰啤酒與氣泡水絕對首選。</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-3 border-t border-stone-800">
-                            <span class="text-lg sm:text-xl font-black text-amber-400">NT$ 160</span>
-                            <button onclick="addToCart('椒鹽黑輪脆口酥', 160)" class="gold-btn-gradient text-stone-950 font-bold px-3.5 py-1.5 sm:py-2 rounded-xl text-xs hover:scale-105 transition">+ 加入購物車</button>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-950 border border-stone-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-amber-500/50 transition">
-                        <div>
-                            <div class="flex justify-between items-start mb-1.5"><h4 class="text-base sm:text-lg font-bold text-stone-100">檸檬黑輪脆口酥</h4><span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">女性最愛</span></div>
-                            <p class="text-stone-400 text-xs mb-3">微酸檸檬香氣清爽解膩，越吃越開胃，讓人停不下來！</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-3 border-t border-stone-800">
-                            <span class="text-lg sm:text-xl font-black text-amber-400">NT$ 160</span>
-                            <button onclick="addToCart('檸檬黑輪脆口酥', 160)" class="gold-btn-gradient text-stone-950 font-bold px-3.5 py-1.5 sm:py-2 rounded-xl text-xs hover:scale-105 transition">+ 加入購物車</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Giftbox Banner -->
-                <div id="giftbox" class="bg-gradient-to-r from-red-950/80 via-stone-900 to-amber-950/80 border-2 border-amber-500/60 rounded-3xl p-5 sm:p-10 text-center relative shadow-2xl">
-                    <span class="inline-block bg-amber-500 text-stone-950 text-[10px] sm:text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider mb-2">🎁 過年 & 聚會送禮首選</span>
-                    <h3 class="text-xl sm:text-4xl font-black text-stone-100 mb-2">黑輪餅乾尊榮禮盒組</h3>
-                    <p class="text-amber-200 text-xs sm:text-base mb-3">一盒內含 <strong class="text-amber-400 underline">兩罐自由搭配</strong> 口味！包裝大氣喜慶，送禮超有面子！</p>
-                    <div class="text-2xl sm:text-3xl font-black text-amber-400 py-1 sm:py-2 mb-3">優惠價 NT$ 588 <span class="text-xs text-stone-400 font-normal">/ 盒</span></div>
-                    <button onclick="openGiftBoxModal()" class="gold-btn-gradient text-stone-950 font-black px-6 sm:px-8 py-3.5 rounded-xl text-sm sm:text-base shadow-lg shadow-amber-500/20 hover:scale-105 transition">
-                        <i class="fa-solid fa-gift mr-2"></i> 自由搭配禮盒口味並下單
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <footer class="bg-stone-950 border-t border-stone-800 py-8 px-4 text-center text-xs text-stone-500">
-            <div class="max-w-6xl mx-auto space-y-3">
-                <div class="gold-gradient-text font-bold text-xs sm:text-sm">何老酥國際貿易有限公司 版權所有 © HE LAO SU CO., LTD.</div>
-                <p>食品業者登錄字號與完整檢驗報告備查中 | 客服專線與團購諮詢歡迎私訊 IG / Threads / LINE 官方帳號</p>
-                <div class="pt-2">
-                    <button onclick="openAdminModal()" class="text-stone-600 hover:text-amber-400 text-[11px] underline flex items-center justify-center gap-1 mx-auto">
-                        <i class="fa-solid fa-lock"></i> 店家後台接單管理 (對帳/更新狀態)
-                    </button>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <div id="giftbox-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-stone-900 border-2 border-amber-500/70 rounded-3xl max-w-lg w-full p-5 sm:p-6 relative shadow-2xl space-y-4">
-            <button onclick="closeGiftBoxModal()" class="absolute top-4 right-4 text-stone-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-            <div class="text-center space-y-1">
-                <span class="bg-amber-500 text-stone-950 text-[10px] font-bold px-2.5 py-0.5 rounded-full">尊榮禮盒專區</span>
-                <h3 class="text-xl sm:text-2xl font-black gold-gradient-text">黑輪餅乾禮盒 ($588)</h3>
-                <p class="text-xs text-stone-400">請自由選擇 2 罐口味組合：</p>
-            </div>
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold text-amber-300 mb-1">罐裝口味 1：</label>
-                    <select id="gift-flavor-1" class="w-full bg-stone-950 border border-amber-500/30 rounded-xl p-2.5 text-stone-200">
-                        <option value="原味">原味黑輪脆口酥</option>
-                        <option value="椒鹽" selected>椒鹽黑輪脆口酥</option>
-                        <option value="檸檬">檸檬黑輪脆口酥</option>
-                        <option value="芥末">芥末黑輪脆口酥</option>
-                        <option value="辣椒鹽">辣椒鹽黑輪脆口酥</option>
-                        <option value="梅粉">梅粉黑輪脆口酥</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-bold text-amber-300 mb-1">罐裝口味 2：</label>
-                    <select id="gift-flavor-2" class="w-full bg-stone-950 border border-amber-500/30 rounded-xl p-2.5 text-stone-200">
-                        <option value="原味">原味黑輪脆口酥</option>
-                        <option value="椒鹽">椒鹽黑輪脆口酥</option>
-                        <option value="檸檬" selected>檸檬黑輪脆口酥</option>
-                        <option value="芥末">芥末黑輪脆口酥</option>
-                        <option value="辣椒鹽">辣椒鹽黑輪脆口酥</option>
-                        <option value="梅粉">梅粉黑輪脆口酥</option>
-                    </select>
-                </div>
-            </div>
-            <button onclick="addGiftBoxToCart()" class="w-full gold-btn-gradient text-stone-950 font-black py-3 rounded-xl text-xs sm:text-sm hover:scale-105 transition">確認口味並加入購物車 (NT$ 588)</button>
+        <div class="flex items-center space-x-3">
+          <button onclick="window.openLookupModal()" class="px-3 py-1.5 text-xs rounded-full bg-zinc-800 border border-amber-500/40 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>訂單查詢</span>
+          </button>
+          
+          <button onclick="window.toggleCart()" class="relative p-2 rounded-full bg-amber-500 text-black font-bold hover:bg-amber-400 transition flex items-center justify-center shadow-lg shadow-amber-500/20">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+          </button>
         </div>
-    </div>
+      </div>
+    </header>
 
-    <div id="order-lookup-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-stone-900 border-2 border-amber-500/60 rounded-3xl max-w-xl w-full p-5 sm:p-6 relative shadow-2xl text-stone-200 space-y-4 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeOrderLookupModal()" class="absolute top-4 right-4 text-stone-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+    <!-- 1. 首頁 Hero Section -->
+    <section id="hero" class="relative bg-marble py-16 sm:py-24 px-4 overflow-hidden border-b border-amber-900/30">
+      <div class="bokeh-light w-96 h-96 -top-20 -left-20"></div>
+      <div class="bokeh-light w-80 h-80 bottom-0 right-0"></div>
 
-            <div class="text-center space-y-1">
-                <span class="bg-amber-500 text-stone-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">即時雲端查詢</span>
-                <h3 class="text-xl sm:text-2xl font-black gold-gradient-text">🔍 訂單進度查詢</h3>
-                <p class="text-xs text-stone-400">請輸入您下單時填寫的「行動電話號碼」即可即時查詢處理進度</p>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="hero-flex flex flex-col md:flex-row items-center justify-between gap-10">
+          <div class="flex-1 space-y-6 text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium">
+              <i class="fa-solid fa-fire text-amber-400"></i>
+              <span>IG、Threads 狂推！台式爆酥零食第一品牌</span>
             </div>
-
-            <div class="flex gap-2">
-                <input type="tel" id="lookup-phone" placeholder="例如：0912345678" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-stone-100 focus:border-amber-400 focus:outline-none text-xs sm:text-sm font-mono">
-                <button onclick="executeOrderLookup()" class="gold-btn-gradient text-stone-950 font-bold px-5 py-3 rounded-xl text-xs sm:text-sm shrink-0 hover:scale-105 transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-magnifying-glass"></i> 查詢
-                </button>
-            </div>
-
-            <div id="lookup-results-container" class="space-y-3 pt-2 text-xs">
-                <div class="text-center text-stone-500 py-6 bg-stone-950/60 rounded-2xl border border-stone-800">
-                    輸入手機號碼後點擊「查詢」按鈕查看訂單進度
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="admin-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-stone-900 border-2 border-amber-500/80 rounded-3xl max-w-3xl w-full p-5 sm:p-6 relative shadow-2xl text-stone-200 space-y-4 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-stone-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
-
-            <!-- State 1: Password Prompt -->
-            <div id="admin-auth-panel" class="text-center space-y-4 py-6">
-                <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto text-xl border border-amber-500/40">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-amber-300">👨‍🍳 店家管理後台身份驗證</h3>
-                    <p class="text-xs text-stone-400 mt-1">密碼將傳送至 Google Apps Script 伺服器進行驗證（前端零留存）</p>
-                </div>
-                <div class="max-w-xs mx-auto space-y-2">
-                    <input type="password" id="admin-input-pwd" placeholder="請輸入店家管理密碼" class="w-full bg-stone-950 border border-amber-500/40 rounded-xl p-2.5 text-center text-stone-100 focus:border-amber-400 focus:outline-none text-sm font-mono">
-                    <button onclick="verifyAdminAndLoad()" class="w-full gold-btn-gradient text-stone-950 font-bold py-2.5 rounded-xl text-xs hover:scale-105 transition">
-                        確認登入後台
-                    </button>
-                </div>
-            </div>
-
-            <!-- State 2: Admin Dashboard Content -->
-            <div id="admin-dashboard-panel" class="hidden space-y-4">
-                <div class="text-center space-y-1">
-                    <span class="bg-red-600 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">商家專屬面板</span>
-                    <h3 class="text-xl sm:text-2xl font-black gold-gradient-text">接單與對帳管理後台</h3>
-                    <p class="text-xs text-stone-400">已成功驗證！資料即時同步自 Google 試算表（依月份分頁整理）</p>
-                </div>
-
-                <div class="flex justify-between items-center bg-stone-950 p-3 rounded-xl border border-stone-800 text-xs">
-                    <span id="admin-order-count" class="text-amber-300 font-bold">載入訂單中...</span>
-                    <button onclick="fetchAdminOrdersFromGas()" class="bg-stone-800 hover:bg-stone-700 text-stone-200 px-3 py-1 rounded-lg border border-amber-500/30 font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-rotate-right"></i> 重新整理
-                    </button>
-                </div>
-
-                <div id="admin-orders-list" class="space-y-3 text-xs max-h-[55vh] overflow-y-auto pr-1"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-stone-900 border-l border-amber-500/40 z-50 shadow-2xl transform translate-x-full transition-transform duration-300 p-5 flex flex-col justify-between">
-        <div>
-            <div class="flex items-center justify-between pb-3 border-b border-stone-800">
-                <h3 class="text-base sm:text-lg font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-basket-shopping"></i> 您的購物車</h3>
-                <button onclick="toggleCart()" class="text-stone-400 hover:text-white text-base"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div class="my-3 p-2.5 bg-stone-950 rounded-xl border border-amber-500/20 text-xs">
-                <div class="flex justify-between text-amber-300 font-semibold mb-1" id="free-shipping-text">
-                    <span>滿 10 包（件）即享免運</span>
-                    <span id="free-shipping-diff">還差 10 包</span>
-                </div>
-                <div class="w-full bg-stone-800 rounded-full h-2 overflow-hidden">
-                    <div id="free-shipping-bar" class="bg-gradient-to-r from-amber-500 to-amber-300 h-2 transition-all duration-300" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div id="cart-items-list" class="py-2 space-y-3 max-h-[50vh] overflow-y-auto text-xs text-stone-300">
-                <div class="text-center text-stone-500 py-8">購物車內目前沒有商品</div>
-            </div>
-        </div>
-
-        <div class="pt-3 border-t border-stone-800 space-y-3">
-            <div class="space-y-1 text-xs text-stone-400">
-                <div class="flex justify-between"><span>小計：</span><span id="cart-subtotal" class="text-stone-200">NT$ 0</span></div>
-                <div class="flex justify-between"><span>運費計算：</span><span id="cart-shipping" class="text-stone-200">NT$ 80</span></div>
-                <div class="flex justify-between font-bold text-sm text-stone-200 pt-1 border-t border-stone-800/80">
-                    <span>合計金額：</span><span id="cart-total-price" class="text-lg text-amber-400 font-black">NT$ 0</span>
-                </div>
-            </div>
-            <button onclick="openCheckoutModal()" class="w-full gold-btn-gradient text-stone-950 font-black py-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
-                <i class="fa-solid fa-credit-card"></i> 前往結帳填寫資料
-            </button>
-        </div>
-    </div>
-
-    <div id="checkout-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-        <div class="bg-stone-900 border-2 border-amber-500/60 rounded-3xl max-w-2xl w-full p-5 sm:p-7 relative shadow-2xl max-h-[92vh] overflow-y-auto my-auto text-stone-200">
-            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-stone-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
-
-            <!-- State A: Checkout Form -->
-            <div id="checkout-form-state">
-                <div class="text-center space-y-1 pb-4 border-b border-stone-800">
-                    <span class="bg-amber-500 text-stone-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">何老酥 快捷結帳中心</span>
-                    <h3 class="text-xl sm:text-2xl font-black gold-gradient-text">訂單確認與收件資料填寫</h3>
-                </div>
-
-                <form onsubmit="handleOrderSubmit(event)" class="space-y-4 pt-4">
-                    <div class="bg-stone-950 border border-amber-500/30 rounded-2xl p-3 sm:p-4 space-y-2 text-xs">
-                        <div id="checkout-items-preview" class="divide-y divide-stone-800/60 text-stone-300 max-h-36 overflow-y-auto pr-1"></div>
-                        <div class="pt-2 border-t border-stone-800 flex justify-between text-amber-400 font-bold text-sm">
-                            <span>應付總金額：</span><span id="checkout-total-text" class="text-base sm:text-lg font-black">NT$ 0</span>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="block text-xs font-bold text-amber-300">選擇配送方式</label>
-                        <div class="grid grid-cols-2 gap-2 text-xs">
-                            <label class="bg-stone-950 border border-stone-800 rounded-xl p-2.5 flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="shipping_method" value="711" checked onchange="updateShippingUI('711')" class="accent-amber-500"> 7-ELEVEN 純取貨
-                            </label>
-                            <label class="bg-stone-950 border border-stone-800 rounded-xl p-2.5 flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="shipping_method" value="family" onchange="updateShippingUI('family')" class="accent-amber-500"> 全家 純取貨
-                            </label>
-                            <label class="bg-stone-950 border border-stone-800 rounded-xl p-2.5 flex items-center gap-2 cursor-pointer col-span-2">
-                                <input type="radio" name="shipping_method" value="post" onchange="updateShippingUI('post')" class="accent-amber-500"> 中華郵政 郵寄到府
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                        <div>
-                            <label class="block text-stone-400 mb-1">真實姓名 <span class="text-red-400">*</span></label>
-                            <input type="text" id="order-name" required placeholder="何小酥" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-2.5 text-stone-100">
-                        </div>
-                        <div>
-                            <label class="block text-stone-400 mb-1">行動電話 <span class="text-red-400">*</span></label>
-                            <input type="tel" id="order-phone" required pattern="^09\d{8}$" placeholder="0912345678" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-2.5 text-stone-100">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                        <div>
-                            <label class="block text-stone-400 mb-1">Email <span class="text-red-400">*</span></label>
-                            <input type="email" id="order-email" required placeholder="name@example.com" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-2.5 text-stone-100">
-                        </div>
-                        <div>
-                            <label class="block text-stone-400 mb-1">轉帳帳號末 5 碼 <span class="text-red-400">*</span></label>
-                            <input type="text" id="order-bank-last5" required maxLength="5" placeholder="12345" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-2.5 text-stone-100">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-stone-400 mb-1"><span id="address-label">7-ELEVEN 取貨門市名稱與店號</span> <span class="text-red-400">*</span></label>
-                        <input type="text" id="order-address" required placeholder="例如：7-11 酥脆門市 (店號: 123456)" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-2.5 text-stone-100 text-xs">
-                    </div>
-
-                    <button type="submit" id="submit-order-btn" class="w-full gold-btn-gradient text-stone-950 font-black py-3.5 rounded-xl text-sm hover:scale-105 transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> <span id="submit-btn-text">確認成立訂單</span>
-                    </button>
-                </form>
-            </div>
-
-            <!-- State B: Success Voucher -->
-            <div id="checkout-success-state" class="hidden text-center space-y-4 py-2">
-                <div class="w-14 h-14 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400 text-2xl mx-auto border border-emerald-500/40">✓</div>
-                <h3 class="text-xl font-black text-stone-100">感謝您的支持與訂購！</h3>
-                <div id="success-voucher-content" class="bg-stone-950 border border-amber-500/30 rounded-2xl p-4 text-left text-xs space-y-2 font-mono text-stone-300"></div>
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <button onclick="sendOrderToLine()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-xl text-xs flex items-center justify-center gap-1.5"><i class="fa-brands fa-line text-base"></i> 傳送給 LINE 客服對帳</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // ==========================================
-        // 【設定】請貼上您部署 Google Apps Script 獲得的網頁應用程式 URL
-        // ==========================================
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx0djWyFm0v2m-IAsWYeqDs1SmIL_W0yuawKZuJADYKOQieLwCg9x6g7DlQ1k4ssnOz/exec"; 
-
-        let cart = [];
-        let currentOrderData = null;
-        let authenticatedAdminPwd = null;
-
-        function setViewMode(mode) {
-            const container = document.getElementById('app-view-container');
-            if (!container) return;
-            container.className = "transition-all duration-300 mx-auto bg-stone-950";
-            if (mode === 'desktop') {
-                container.classList.add('w-[1280px]', 'min-w-[1280px]', 'shadow-2xl', 'my-6', 'rounded-2xl', 'border-4', 'border-amber-900/60', 'overflow-hidden');
-            } else if (mode === 'mobile') {
-                container.classList.add('is-mobile-sim');
-            } else {
-                container.classList.add('w-full');
-            }
-        }
-
-        function addToCart(name, price) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) existing.qty += 1;
-            else cart.push({ name, price, qty: 1 });
-            updateCartUI();
-            showToast(`✨ 「${name}」已加入購物車！`);
-        }
-
-        function addGiftBoxToCart() {
-            const flavor1 = document.getElementById('gift-flavor-1').value;
-            const flavor2 = document.getElementById('gift-flavor-2').value;
-            addToCart(`黑輪餅乾禮盒 (${flavor1} + ${flavor2})`, 588);
-            closeGiftBoxModal();
-        }
-
-        function toggleCart() {
-            document.getElementById('cart-drawer')?.classList.toggle('translate-x-full');
-        }
-
-        function updateCartUI() {
-            const cartList = document.getElementById('cart-items-list');
-            let subtotal = 0, totalQty = 0;
-
-            if (cart.length === 0) {
-                cartList.innerHTML = `<div class="text-center text-stone-500 py-8">購物車內目前沒有商品</div>`;
-            } else {
-                cartList.innerHTML = cart.map((item, index) => {
-                    subtotal += item.price * item.qty;
-                    totalQty += item.qty;
-                    return `
-                        <div class="bg-stone-950 p-2.5 rounded-xl border border-stone-800 flex justify-between items-center">
-                            <div>
-                                <div class="font-bold text-amber-200">${item.name}</div>
-                                <div class="text-stone-400 text-[11px]">NT$ ${item.price} x ${item.qty}</div>
-                            </div>
-                            <div class="flex items-center space-x-1.5">
-                                <button onclick="updateQty(${index}, -1)" class="w-5 h-5 bg-stone-800 text-stone-200 rounded font-bold">-</button>
-                                <span class="text-xs font-bold px-1">${item.qty}</span>
-                                <button onclick="updateQty(${index}, 1)" class="w-5 h-5 bg-stone-800 text-stone-200 rounded font-bold">+</button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            const shipping = (totalQty >= 10 || cart.length === 0) ? 0 : 80;
-            document.getElementById('cart-count-badge').innerText = totalQty;
-            document.getElementById('cart-subtotal').innerText = `NT$ ${subtotal}`;
-            document.getElementById('cart-shipping').innerText = shipping === 0 ? '🎉 免運' : `NT$ ${shipping}`;
-            document.getElementById('cart-total-price').innerText = `NT$ ${subtotal + shipping}`;
             
-            const freeShipDiff = document.getElementById('free-shipping-diff');
-            const freeShipBar = document.getElementById('free-shipping-bar');
-            if (totalQty >= 10) {
-                freeShipDiff.innerText = '🎉 已達免運門檻！';
-                freeShipBar.style.width = '100%';
-            } else {
-                freeShipDiff.innerText = `還差 ${10 - totalQty} 包免運`;
-                freeShipBar.style.width = `${(totalQty / 10) * 100}%`;
-            }
-        }
+            <h2 class="hero-title font-serif-tc text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gold-gradient">
+              一口喀滋！<br>炸黑輪變身涮嘴極致酥！
+            </h2>
+            
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              告別油膩與油耗味！嚴選台式傳統風味 × 獨家去油爆酥工法，6種爆款風味讓你一口接一口，隨時隨地低罪惡感爽嗑！
+            </p>
 
-        function updateQty(index, change) {
-            if (cart[index]) {
-                cart[index].qty += change;
-                if (cart[index].qty <= 0) cart.splice(index, 1);
-                updateCartUI();
-            }
-        }
+            <div class="flex flex-wrap gap-3 pt-2 text-xs text-amber-200/80">
+              <span class="px-2.5 py-1 rounded bg-zinc-900/80 border border-amber-500/20"><i class="fa-solid fa-check text-amber-400 mr-1"></i>大成餐飲級優質油</span>
+              <span class="px-2.5 py-1 rounded bg-zinc-900/80 border border-amber-500/20"><i class="fa-solid fa-check text-amber-400 mr-1"></i>BaP 檢驗合格未檢出</span>
+              <span class="px-2.5 py-1 rounded bg-zinc-900/80 border border-amber-500/20"><i class="fa-solid fa-check text-amber-400 mr-1"></i>不沾手爆脆體驗</span>
+            </div>
 
-        function openCheckoutModal() {
-            if (cart.length === 0) { showToast('⚠️ 購物車是空的'); return; }
-            document.getElementById('cart-drawer').classList.add('translate-x-full');
-            document.getElementById('checkout-form-state').classList.remove('hidden');
-            document.getElementById('checkout-success-state').classList.add('hidden');
+            <div class="pt-4 flex flex-col sm:flex-row gap-4">
+              <a href="#products" class="px-8 py-3.5 rounded-xl bg-gold-gradient text-black font-bold text-center text-base hover:brightness-110 transition shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bag-shopping"></i> 搶先入手選購
+              </a>
+              <button onclick="window.openGiftModal()" class="px-6 py-3.5 rounded-xl bg-zinc-900 border border-amber-500/50 text-amber-300 font-bold text-center text-base hover:bg-amber-500/10 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-gift"></i> 尊榮禮盒組 ($588)
+              </button>
+            </div>
+          </div>
 
-            let subtotal = 0, totalQty = 0;
-            let previewHtml = '';
-            cart.forEach(item => {
-                subtotal += item.price * item.qty;
-                totalQty += item.qty;
-                previewHtml += `<div class="py-1 flex justify-between"><span>${item.name} x${item.qty}</span><span>NT$ ${item.price * item.qty}</span></div>`;
-            });
-
-            const shipping = totalQty >= 10 ? 0 : 80;
-            document.getElementById('checkout-items-preview').innerHTML = previewHtml;
-            document.getElementById('checkout-total-text').innerText = `NT$ ${subtotal + shipping}`;
-            document.getElementById('submit-btn-text').innerText = `確認成立訂單 (NT$ ${subtotal + shipping})`;
-            document.getElementById('checkout-modal').classList.remove('hidden');
-        }
-
-        function closeCheckoutModal() { document.getElementById('checkout-modal').classList.add('hidden'); }
-
-        function updateShippingUI(method) {
-            const label = document.getElementById('address-label');
-            const input = document.getElementById('order-address');
-            if (method === 'post') {
-                label.innerText = '郵寄到府完整地址';
-                input.placeholder = '806 高雄市前鎮區成功二路88號';
-            } else if (method === 'family') {
-                label.innerText = '全家門市名稱與店號';
-                input.placeholder = '全家 咔滋門市 (店號: 01234)';
-            } else {
-                label.innerText = '7-ELEVEN 門市名稱與店號';
-                input.placeholder = '7-11 酥脆門市 (店號: 123456)';
-            }
-        }
-
-        async function handleOrderSubmit(event) {
-            event.preventDefault();
-            const submitBtn = document.getElementById('submit-order-btn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = '⏳ 寫入雲端資料庫中...';
-
-            const name = document.getElementById('order-name').value;
-            const phone = document.getElementById('order-phone').value;
-            const email = document.getElementById('order-email').value;
-            const bankLast5 = document.getElementById('order-bank-last5').value;
-            const address = document.getElementById('order-address').value;
-            const shippingMethod = document.querySelector('input[name="shipping_method"]:checked')?.value || '711';
-
-            let shippingMethodText = '7-ELEVEN 純取貨';
-            if (shippingMethod === 'family') shippingMethodText = '全家 純取貨';
-            if (shippingMethod === 'post') shippingMethodText = '中華郵政 郵寄到府';
-
-            let subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
-            let totalQty = cart.reduce((acc, i) => acc + i.qty, 0);
-            let shipping = totalQty >= 10 ? 0 : 80;
-            let grandTotal = subtotal + shipping;
-
-            const orderId = 'HLS' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + Math.floor(1000 + Math.random() * 9000);
-
-            currentOrderData = {
-                orderId, name, phone, email, bankLast5, address, shippingMethodText,
-                items: [...cart], subtotal, shipping, grandTotal,
-                status: '⏳ 待匯款對帳', date: new Date().toLocaleString('zh-TW')
-            };
-
-            // 如果有設定 GAS URL，送至 Google 試算表
-            if (GAS_WEB_APP_URL && GAS_WEB_APP_URL !== "YOUR_GAS_WEB_APP_URL_HERE") {
-                try {
-                    await fetch(GAS_WEB_APP_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ action: 'createOrder', orderData: currentOrderData })
-                    });
-                } catch(err) {
-                    console.log('GAS submit error fallback', err);
-                }
-            }
-
-            document.getElementById('checkout-form-state').classList.add('hidden');
-            document.getElementById('checkout-success-state').classList.remove('hidden');
-
-            document.getElementById('success-voucher-content').innerHTML = `
-                <div><strong>單號：</strong> ${orderId}</div>
-                <div><strong>姓名：</strong> ${name} (${phone})</div>
-                <div><strong>轉帳末5碼：</strong> <span class="text-amber-400 font-bold">${bankLast5}</span></div>
-                <div><strong>配送門市/地址：</strong> ${address}</div>
-                <div><strong>應轉帳總金額：</strong> <span class="text-amber-400 font-bold text-sm">NT$ ${grandTotal}</span></div>
-            `;
-
-            cart = [];
-            updateCartUI();
-            submitBtn.disabled = false;
-        }
-
-        function sendOrderToLine() {
-            if (!currentOrderData) return;
-            const itemsSummary = currentOrderData.items.map(i => `${i.name} x ${i.qty}`).join('、');
-            const lineText = `【何老酥官方訂單對帳】\n單號：${currentOrderData.orderId}\n姓名：${currentOrderData.name}\n電話：${currentOrderData.phone}\n轉帳末5碼：${currentOrderData.bankLast5}\n應付金額：NT$ ${currentOrderData.grandTotal}\n地址：${currentOrderData.address}\n商品：${itemsSummary}`;
-            window.open(`https://line.me/R/msg/text/?${encodeURIComponent(lineText)}`, '_blank');
-        }
-
-        /* Customer Lookup Logic */
-        function openOrderLookupModal() { document.getElementById('order-lookup-modal').classList.remove('hidden'); }
-        function closeOrderLookupModal() { document.getElementById('order-lookup-modal').classList.add('hidden'); }
-
-        async function executeOrderLookup() {
-            const phoneInput = document.getElementById('lookup-phone').value.trim();
-            const resultsContainer = document.getElementById('lookup-results-container');
-            if (!phoneInput) { showToast('⚠️ 請輸入手機號碼'); return; }
-
-            resultsContainer.innerHTML = `<div class="text-center text-amber-400 py-6">🔍 正在從 Google 雲端資料庫搜尋中...</div>`;
-
-            if (GAS_WEB_APP_URL && GAS_WEB_APP_URL !== "YOUR_GAS_WEB_APP_URL_HERE") {
-                try {
-                    const res = await fetch(GAS_WEB_APP_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'text/plain' },
-                        body: JSON.stringify({ action: 'lookupOrder', phone: phoneInput })
-                    });
-                    const data = await res.json();
-                    if (data.success && data.orders.length > 0) {
-                        resultsContainer.innerHTML = data.orders.map(o => `
-                            <div class="bg-stone-950 border border-amber-500/30 rounded-2xl p-4 space-y-1.5">
-                                <div class="flex justify-between items-center border-b border-stone-800 pb-1.5">
-                                    <span class="font-bold text-amber-300">${o.orderId}</span>
-                                    <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-[10px] font-bold">${o.status}</span>
-                                </div>
-                                <div class="text-stone-300">
-                                    <div><span class="text-stone-400">商品：</span> ${o.itemsSummary}</div>
-                                    <div><span class="text-stone-400">金額：</span> NT$ ${o.grandTotal}</div>
-                                    <div><span class="text-stone-400">門市/地址：</span> ${o.address}</div>
-                                </div>
-                            </div>
-                        `).join('');
-                        return;
-                    }
-                } catch(e) { console.log(e); }
-            }
-
-            resultsContainer.innerHTML = `<div class="text-center text-red-400 py-6 bg-stone-950 rounded-2xl border border-stone-800">查無號碼 「${phoneInput}」 的訂單紀錄，請確認輸入是否正確。</div>`;
-        }
-
-        function openAdminModal() {
-            document.getElementById('admin-modal').classList.remove('hidden');
-            if (!authenticatedAdminPwd) {
-                document.getElementById('admin-auth-panel').classList.remove('hidden');
-                document.getElementById('admin-dashboard-panel').classList.add('hidden');
-            } else {
-                document.getElementById('admin-auth-panel').classList.add('hidden');
-                document.getElementById('admin-dashboard-panel').classList.remove('hidden');
-                fetchAdminOrdersFromGas();
-            }
-        }
-
-        function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); }
-
-        async function verifyAdminAndLoad() {
-            const pwd = document.getElementById('admin-input-pwd').value.trim();
-            if (!pwd) { showToast('⚠️ 請輸入密碼'); return; }
-
-            if (!GAS_WEB_APP_URL || GAS_WEB_APP_URL === "YOUR_GAS_WEB_APP_URL_HERE") {
-                showToast('⚠️ 請先在程式碼設定 GAS_WEB_APP_URL');
-                return;
-            }
-
-            showToast('⏳ 正在向 Google 伺服器驗證密碼...');
-
-            try {
-                const res = await fetch(GAS_WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify({ action: 'adminFetchOrders', password: pwd })
-                });
-                const data = await res.json();
-                if (data.success) {
-                    authenticatedAdminPwd = pwd; // 驗證通過
-                    document.getElementById('admin-auth-panel').classList.add('hidden');
-                    document.getElementById('admin-dashboard-panel').classList.remove('hidden');
-                    renderAdminOrders(data.orders);
-                    showToast('✅ 驗證成功，登入後台！');
-                } else {
-                    showToast(data.message || '⚠️ 密碼錯誤');
-                }
-            } catch(e) {
-                showToast('⚠️ 驗證連線失敗');
-            }
-        }
-
-        async function fetchAdminOrdersFromGas() {
-            if (!authenticatedAdminPwd) return;
-            const listEl = document.getElementById('admin-orders-list');
-            listEl.innerHTML = `<div class="text-center text-amber-400 py-6">⏳ 正在從雲端載入全月份訂單...</div>`;
-
-            try {
-                const res = await fetch(GAS_WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify({ action: 'adminFetchOrders', password: authenticatedAdminPwd })
-                });
-                const data = await res.json();
-                if (data.success) {
-                    renderAdminOrders(data.orders);
-                } else {
-                    showToast(data.message);
-                }
-            } catch(e) {
-                listEl.innerHTML = `<div class="text-center text-red-400 py-6">載入失敗，請確認網路與 GAS 部署狀態。</div>`;
-            }
-        }
-
-        function renderAdminOrders(orders) {
-            const listEl = document.getElementById('admin-orders-list');
-            const countEl = document.getElementById('admin-order-count');
-            countEl.innerText = `目前 Google 試算表中共有 ${orders.length} 筆訂單`;
-
-            if (orders.length === 0) {
-                listEl.innerHTML = `<div class="text-center text-stone-500 py-8">目前試算表中尚無訂單資料。</div>`;
-                return;
-            }
-
-            listEl.innerHTML = orders.map(o => `
-                <div class="bg-stone-950 border border-stone-800 p-3.5 rounded-2xl space-y-2">
-                    <div class="flex justify-between items-center border-b border-stone-800 pb-2">
-                        <div>
-                            <span class="font-bold text-amber-300">${o.orderId}</span>
-                            <span class="text-amber-500/80 text-[10px] ml-2 font-bold">[${o.sheetName || '雲端'}]</span>
-                        </div>
-                        <div class="flex gap-1.5">
-                            <button onclick="updateOrderStatusFromGas('${o.orderId}', '🟡 已對帳備貨中')" class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] px-2 py-1 rounded font-bold">標示已對帳</button>
-                            <button onclick="updateOrderStatusFromGas('${o.orderId}', '🚚 已寄出')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] px-2 py-1 rounded font-bold">標示已寄出</button>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-stone-300">
-                        <div><strong class="text-stone-400">顧客：</strong> ${o.name} (${o.phone})</div>
-                        <div><strong class="text-stone-400">轉帳末 5 碼：</strong> <span class="text-amber-400 font-bold">${o.bankLast5}</span></div>
-                        <div><strong class="text-stone-400">金額：</strong> NT$ ${o.grandTotal}</div>
-                        <div><strong class="text-stone-400">目前狀態：</strong> <span class="text-amber-300 font-bold">${o.status}</span></div>
-                        <div class="sm:col-span-2"><strong class="text-stone-400">地址/門市：</strong> ${o.address}</div>
-                        <div class="sm:col-span-2"><strong class="text-stone-400">商品：</strong> ${o.itemsSummary}</div>
-                    </div>
+          <!-- 右側奢華視覺展示卡片 -->
+          <div class="w-full md:w-5/12">
+            <div class="gold-border-box rounded-2xl bg-dark-card p-6 relative overflow-hidden text-center space-y-4">
+              <div class="text-xs text-amber-400/80 tracking-widest font-serif-tc">HE LAO SU PREMIUM</div>
+              <h3 class="text-2xl font-serif-tc font-bold text-amber-100">何老酥黑輪脆口酥</h3>
+              
+              <div class="my-4 py-6 border-y border-amber-500/20 flex justify-around items-center">
+                <div class="text-center">
+                  <div class="text-amber-400 font-bold text-lg">【罐裝脆口酥】</div>
+                  <div class="text-xs text-zinc-400">6款經典風味任選</div>
+                  <div class="text-amber-300 font-bold mt-1">NT$ 150 起</div>
                 </div>
-            `).join('');
+                <div class="w-px h-10 bg-amber-500/20"></div>
+                <div class="text-center">
+                  <div class="text-amber-400 font-bold text-lg">【爆酥可頌條】</div>
+                  <div class="text-xs text-zinc-400">層層酥脆香濃</div>
+                  <div class="text-amber-300 font-bold mt-1">NT$ 220 起</div>
+                </div>
+              </div>
+
+              <button onclick="window.openGiftModal()" class="w-full py-2.5 rounded-lg bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-bold hover:bg-amber-500/30 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-box-open"></i> 自訂雙罐禮盒配方 ($588)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 痛點共鳴與產品解決方案區 -->
+    <section id="pain-point" class="py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">REAL PAIN POINTS</span>
+          <h2 class="text-2xl sm:text-3xl font-serif-tc font-bold text-amber-100">你是否也常遇到這種零食崩潰時刻？</h2>
+          <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl"><i class="fa-solid fa-hand-droplet"></i></div>
+            <h3 class="font-bold text-lg text-zinc-200">傳統炸黑輪太油膩</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">買回來的炸黑輪紙袋全是油，吃兩口就膩，拿手機追劇還把螢幕弄得黏答答。</p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl"><i class="fa-solid fa-hourglass-end"></i></div>
+            <h3 class="font-bold text-lg text-zinc-200">放久變軟像咬橡皮筋</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">外送或外帶冷掉後口感大崩壞，完全失去剛炸好時的酥脆爽感。</p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl"><i class="fa-solid fa-shield-virus"></i></div>
+            <h3 class="font-bold text-lg text-zinc-200">擔心夜市回鍋油危害</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">想解饞又害怕路邊攤油質不佳，吃多給身體帶來沉重罪惡感與負擔。</p>
+          </div>
+        </div>
+
+        <!-- 解決方案 -->
+        <div class="gold-border-box p-8 rounded-2xl bg-dark-card text-center space-y-4">
+          <h3 class="text-2xl font-serif-tc font-bold text-gold-gradient">何老酥解法：極致去油爆酥工法</h3>
+          <p class="text-sm text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+            我們透過獨家低溫慢焙與甩油技術，將傳統黑輪片轉化為「極致酥脆、保存期長、清爽不沾手」的餅乾級零食！讓你隨時隨地，想嗑就嗑！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 黑金尊榮奢華區塊 (對應圖片 3 & AI 藝術圖風格) -->
+    <section id="luxury" class="py-20 px-4 bg-marble relative overflow-hidden border-b border-amber-900/30">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">HERITAGE & CRAFT</span>
+          <h2 class="text-3xl sm:text-4xl font-serif-tc font-bold text-gold-gradient">尊榮之選 · 極致酥脆</h2>
+          <p class="text-xs text-amber-200/70">傳承古早好味道 · 成就非凡好口感</p>
+        </div>
+
+        <!-- 6大風味尊榮展示陣列 -->
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 text-center">
+          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
+            <div class="text-amber-400 font-bold text-base">原味</div>
+            <div class="text-[10px] text-zinc-400 mt-1">經典鮮香 越吃越涮嘴</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
+            <div class="text-amber-400 font-bold text-base">椒鹽</div>
+            <div class="text-[10px] text-zinc-400 mt-1">獨門胡椒 鹹香帶勁</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
+            <div class="text-amber-400 font-bold text-base">芥末</div>
+            <div class="text-[10px] text-zinc-400 mt-1">微嗆爽快 醒腦首選</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
+            <div class="text-amber-400 font-bold text-base">辣椒鹽</div>
+            <div class="text-[10px] text-zinc-400 mt-1">辛香香辣 下酒絕配</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
+            <div class="text-amber-400 font-bold text-base">梅粉</div>
+            <div class="text-[10px] text-zinc-400 mt-1">酸甜梅香 回甘滋味</div>
+          </div>
+          <div class="p-4 rounded-xl bg-zinc-900/80 border border-amber-500/20 hover:border-amber-400 transition">
+            <div class="text-amber-400 font-bold text-base">檸檬</div>
+            <div class="text-[10px] text-zinc-400 mt-1">清新爽口 解膩無負擔</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 人氣商品挑選與下單區 -->
+    <section id="products" class="py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <span class="text-amber-400 text-xs font-bold tracking-widest uppercase">SELECT YOUR FAVORITES</span>
+          <h2 class="text-3xl font-serif-tc font-bold text-amber-100">人氣熱銷商品目錄</h2>
+          <p class="text-xs text-zinc-400">未滿 10 包/件需另加運費 NT$ 80，滿 10 包/件即享免運費優惠！</p>
+        </div>
+
+        <!-- 商品分區 A: 黑輪脆口酥罐裝系列 -->
+        <div class="space-y-6">
+          <h3 class="text-xl font-serif-tc font-bold text-amber-400 border-l-4 border-amber-500 pl-3">【黑輪脆口酥】罐裝系列 (單罐裝)</h3>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 原味 -->
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">原味 Original</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 150</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">經典古早味鮮魚香氣，極致酥脆咬下即化。</p>
+              </div>
+              <button onclick="window.addToCart('黑輪脆口酥-原味', 150)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <!-- 椒鹽 -->
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">椒鹽 Pepper</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">特調白胡椒與香辛料，鹹香台味經典首選。</p>
+              </div>
+              <button onclick="window.addToCart('黑輪脆口酥-椒鹽', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <!-- 芥末 -->
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">芥末 Mustard</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">微嗆芥末香精準衝鼻，過癮醒腦第一名。</p>
+              </div>
+              <button onclick="window.addToCart('黑輪脆口酥-芥末', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <!-- 辣椒鹽 -->
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">辣椒鹽 Chili Salt</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">主廚研磨紅辣椒粉搭配鹽花，香辣下酒不可少。</p>
+              </div>
+              <button onclick="window.addToCart('黑輪脆口酥-辣椒鹽', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <!-- 梅粉 -->
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">梅粉 Plum Powder</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 170</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">台灣嚴選話梅粉，酸甜回甘，解膩絕配。</p>
+              </div>
+              <button onclick="window.addToCart('黑輪脆口酥-梅粉', 170)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <!-- 檸檬 -->
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between hover:border-amber-400 transition">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">檸檬 Lemon</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 160</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">清新檸檬微酸果香，口感格外清爽令人上癮。</p>
+              </div>
+              <button onclick="window.addToCart('黑輪脆口酥-檸檬', 160)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 商品分區 B: 爆酥可頌條新品系列 -->
+        <div class="space-y-6 pt-6">
+          <h3 class="text-xl font-serif-tc font-bold text-amber-400 border-l-4 border-amber-500 pl-3">【爆酥可頌條】新品系列</h3>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">可頌條-原味</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 220</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">層層酥脆，奶油香氣濃郁溢口。</p>
+              </div>
+              <button onclick="window.addToCart('爆酥可頌條-原味', 220)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">可頌條-梅粉</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 230</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">酸甜梅香與奶油派皮的頂級碰撞。</p>
+              </div>
+              <button onclick="window.addToCart('爆酥可頌條-梅粉', 230)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+
+            <div class="rounded-xl bg-zinc-900 border border-amber-500/20 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold text-lg text-amber-200">可頌條-檸檬</h4>
+                  <span class="text-amber-400 font-bold text-lg">NT$ 230</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-2">清新檸檬果香，甜而不膩爽口升級。</p>
+              </div>
+              <button onclick="window.addToCart('爆酥可頌條-檸檬', 230)" class="mt-4 w-full py-2.5 rounded-lg bg-amber-500 text-black font-bold text-sm hover:bg-amber-400 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-plus"></i> 加入購物車
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 商品分區 C: 黑輪餅乾禮盒 -->
+        <div class="gold-border-box rounded-2xl bg-dark-card p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-left">
+            <span class="px-3 py-1 rounded bg-red-600/30 text-red-300 text-xs font-bold border border-red-500/40">過年禮盒 / 節慶送禮首選</span>
+            <h3 class="text-2xl font-serif-tc font-bold text-gold-gradient">黑輪餅乾雙罐禮盒 ($588)</h3>
+            <p class="text-xs text-zinc-300">一盒內含兩罐精裝黑輪脆口酥，自由任意搭配喜歡的口味！</p>
+          </div>
+          <button onclick="window.openGiftModal()" class="px-8 py-3.5 rounded-xl bg-gold-gradient text-black font-bold hover:brightness-110 transition shrink-0 shadow-lg shadow-amber-500/20">
+            <i class="fa-solid fa-sliders"></i> 開啟自由搭配禮盒
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 食安承諾與驗證卡片 (對應圖片 2) -->
+    <section id="food-safety" class="py-16 px-4 bg-marble border-b border-amber-900/30">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">FOOD SAFETY & QUALITY</span>
+          <h2 class="text-3xl font-serif-tc font-bold text-amber-100">安心油品 · 用心製作</h2>
+          <p class="text-xs text-zinc-400">守護您的每一口酥脆 · 食在安心品質把關</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-zinc-900/80 border border-emerald-500/30 space-y-4">
+            <div class="flex items-center space-x-3 text-emerald-400">
+              <i class="fa-solid fa-oil-well text-2xl"></i>
+              <h3 class="font-bold text-lg text-zinc-100">嚴選大成餐飲炸油 (18L)</h3>
+            </div>
+            <ul class="text-xs text-zinc-300 space-y-2 list-disc list-inside">
+              <li>採用二次精製軟棕油，油質極度穩定。</li>
+              <li>絕不含大豆沙拉油易氧化成分，適合高溫爆酥。</li>
+              <li>檢附維義事業股份有限公司油品來源證明文件。</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-zinc-900/80 border border-emerald-500/30 space-y-4">
+            <div class="flex items-center space-x-3 text-emerald-400">
+              <i class="fa-solid fa-microscope text-2xl"></i>
+              <h3 class="font-bold text-lg text-zinc-100">第三方 BaP (苯駢芘) 檢驗合格</h3>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              自主送驗合格，茶酚花/苯駢芘 (BaP) 檢驗結果為 <span class="text-emerald-400 font-bold">未檢出 N.D.</span>（符合國家法規總量 2.0 μg/kg 嚴格標準）。
+            </p>
+            <div class="text-[10px] text-zinc-500">報告編號備查 · 食安承諾看得見</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 常見問答 FAQ -->
+    <section id="faq" class="py-16 px-4 bg-zinc-950 border-b border-amber-900/20">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="text-center space-y-3">
+          <h2 class="text-2xl font-serif-tc font-bold text-amber-100">常見問答 FAQ</h2>
+          <div class="w-12 h-1 bg-amber-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
+            <h3 class="font-bold text-amber-300 text-sm">Q1：保存期限與保存方式？</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">未開封常溫保存 60 天。開封後請將瓶蓋鎖緊，置於陰涼乾燥處，避免陽光直射，建議兩週內食用完畢口感最佳。</p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
+            <h3 class="font-bold text-amber-300 text-sm">Q2：下單後多久會出貨？運費怎麼計算？</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">訂單確認並完成轉帳後，約 2-4 個工作天內依序出貨。未滿 10 包/件運費 NT$ 80，購買滿 10 包/件即享全台超取/郵寄免運費！</p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
+            <h3 class="font-bold text-amber-300 text-sm">Q3：目前提供哪些付款與配送方式？</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">目前全面採用「銀行轉帳 / ATM 匯款」預付款項。配送支援 7-ELEVEN 超商純取貨、全家超商純取貨，以及中華郵政郵寄到府。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-black py-10 px-4 text-center border-t border-amber-900/40 text-xs text-zinc-500 space-y-4">
+      <div class="flex justify-center items-center space-x-2 text-amber-400/80">
+        <span class="font-serif-tc font-bold">何老酥黑輪脆口酥</span>
+        <span>·</span>
+        <span>何老酥國際貿易有限公司</span>
+      </div>
+      <p>© 2026 何老酥 HE LAO SU. All Rights Reserved.</p>
+      
+      <div class="pt-4">
+        <button onclick="window.openAdminModal()" class="px-3 py-1 rounded bg-zinc-900 text-zinc-600 hover:text-amber-400 border border-zinc-800 transition text-[10px]">
+          <i class="fa-solid fa-user-shield"></i> 店家接單管理後台
+        </button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==================== 側邊購物車與結帳 Drawer ==================== -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-zinc-900 border-l border-amber-500/30 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl">
+    <div class="p-4 bg-black border-b border-amber-500/30 flex justify-between items-center">
+      <h3 class="font-serif-tc font-bold text-amber-300 text-lg flex items-center gap-2">
+        <i class="fa-solid fa-cart-shopping"></i> 您的購物清單
+      </h3>
+      <button onclick="window.toggleCart()" class="text-zinc-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- 購物車品項列表 -->
+    <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-3">
+      <!-- 動態寫入 -->
+    </div>
+
+    <!-- 運費進度條與金額總計 -->
+    <div class="p-4 bg-zinc-950 border-t border-zinc-800 space-y-3">
+      <div id="shipping-banner" class="text-xs text-amber-300/90 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20 text-center">
+        <!-- 動態計算滿10包免運進度 -->
+      </div>
+
+      <div class="flex justify-between items-center text-sm">
+        <span class="text-zinc-400">小計：</span>
+        <span id="cart-subtotal" class="font-bold text-zinc-200">NT$ 0</span>
+      </div>
+      <div class="flex justify-between items-center text-sm">
+        <span class="text-zinc-400">運費 (未滿10包加收80)：</span>
+        <span id="cart-shipping" class="font-bold text-amber-400">NT$ 80</span>
+      </div>
+      <div class="flex justify-between items-center text-base border-t border-zinc-800 pt-2">
+        <span class="font-bold text-amber-200">總計應付金額：</span>
+        <span id="cart-total" class="font-bold text-gold-gradient text-xl">NT$ 80</span>
+      </div>
+
+      <button id="btn-goto-checkout" onclick="window.openCheckoutModal()" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-500/20">
+        前往填寫資料結帳
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 結帳資料填寫 Modal ==================== -->
+  <div id="checkout-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 space-y-5 text-left">
+      <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
+        <h3 class="font-serif-tc font-bold text-amber-300 text-xl">填寫訂購與配送資料</h3>
+        <button onclick="window.closeCheckoutModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <form id="checkout-form" onsubmit="window.handleFormSubmit(event)" class="space-y-4 text-xs">
+        <div class="space-y-1">
+          <label class="text-amber-200 font-bold">訂購人姓名 *</label>
+          <input type="text" id="cust-name" required class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none" placeholder="請輸入姓名">
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-amber-200 font-bold">行動電話 (查單關鍵字) *</label>
+          <input type="tel" id="cust-phone" required pattern="[0-9]{10}" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none" placeholder="範例：0912345678">
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-amber-200 font-bold">配送方式 *</label>
+          <select id="cust-shipping-method" onchange="window.updateShippingUI()" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none">
+            <option value="7-11">7-ELEVEN 超商純取貨</option>
+            <option value="全家">全家超商純取貨</option>
+            <option value="郵寄">中華郵政 郵寄到府</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label id="lbl-address" class="text-amber-200 font-bold">門市名稱與店號 / 郵寄地址 *</label>
+          <input type="text" id="cust-address" required class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none" placeholder="例如：7-11 鑫高雄門市 (123456) 或郵寄地址">
+        </div>
+
+        <div class="p-3 rounded bg-amber-500/10 border border-amber-500/30 space-y-1">
+          <div class="font-bold text-amber-300">付款方式：銀行轉帳 / ATM 匯款</div>
+          <div class="text-[11px] text-zinc-400">請於下單後轉帳至本公司指定帳戶。</div>
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-amber-200 font-bold">您的轉帳帳號末 5 碼 *</label>
+          <input type="text" id="cust-bank-last5" required maxlength="5" pattern="[0-9]{5}" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none" placeholder="請填寫末 5 碼以供對帳">
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-zinc-400">訂單備註 (選填)</label>
+          <input type="text" id="cust-note" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none" placeholder="例：方便收貨時間或注意事項">
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" id="btn-submit-order" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
+            確認送出訂單
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== 下單成功憑證 Modal ==================== -->
+  <div id="success-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="gold-border-box bg-dark-card rounded-2xl max-w-md w-full p-6 text-center space-y-5">
+      <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 flex items-center justify-center text-3xl mx-auto">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <h3 class="font-serif-tc font-bold text-amber-200 text-2xl">訂單建立成功！</h3>
+      
+      <div class="text-xs text-zinc-300 space-y-1">
+        <div>您的訂單編號：<span id="res-order-id" class="font-mono text-amber-400 font-bold"></span></div>
+        <div>資料已成功寫入雲端對帳系統！</div>
+      </div>
+
+      <!-- 轉帳指定帳號資訊卡 -->
+      <div class="p-4 rounded-xl bg-black/60 border border-amber-500/30 text-left space-y-2 text-xs">
+        <div class="font-bold text-amber-300 border-b border-amber-500/20 pb-1">🏦 請完成轉帳匯款：</div>
+        <div class="text-zinc-200">銀行代碼：<span class="text-amber-400 font-bold">822 (中國信託)</span></div>
+        <div class="text-zinc-200">帳戶帳號：<span class="text-amber-400 font-bold font-mono">1234-5678-9012</span></div>
+        <div class="text-zinc-200">戶名：<span class="text-amber-400 font-bold">何老酥國際貿易有限公司</span></div>
+        <div class="text-zinc-200">轉帳總金額：<span id="res-order-amount" class="text-gold-gradient font-bold text-base"></span></div>
+      </div>
+
+      <div class="pt-2 space-y-2">
+        <a id="btn-send-line" href="#" target="_blank" class="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2">
+          <i class="fa-brands fa-line text-lg"></i> 一鍵點擊通知 LINE 官方客服對帳
+        </a>
+        <button onclick="window.closeSuccessModal()" class="w-full py-2.5 rounded-xl bg-zinc-800 text-zinc-300 text-xs hover:bg-zinc-700 transition">
+          關閉視窗
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 靜止不晃動禮盒搭配 Modal ==================== -->
+  <div id="gift-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-6 space-y-5 text-left">
+      <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
+        <h3 class="font-serif-tc font-bold text-amber-300 text-xl">黑輪餅乾雙罐禮盒 ($588)</h3>
+        <button onclick="window.closeGiftModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <div class="space-y-1">
+          <label class="text-amber-200 font-bold">選擇第一罐口味：</label>
+          <select id="gift-item-1" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none">
+            <option>原味 Original</option>
+            <option>椒鹽 Pepper</option>
+            <option>芥末 Mustard</option>
+            <option>辣椒鹽 Chili Salt</option>
+            <option>梅粉 Plum Powder</option>
+            <option>檸檬 Lemon</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-amber-200 font-bold">選擇第二罐口味：</label>
+          <select id="gift-item-2" class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none">
+            <option>原味 Original</option>
+            <option>椒鹽 Pepper</option>
+            <option>芥末 Mustard</option>
+            <option>辣椒鹽 Chili Salt</option>
+            <option>梅粉 Plum Powder</option>
+            <option>檸檬 Lemon</option>
+          </select>
+        </div>
+
+        <button onclick="window.addGiftToCart()" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
+          將禮盒組合加入購物車 ($588)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 顧客手機查單 Modal ==================== -->
+  <div id="lookup-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-6 space-y-4 text-left">
+      <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+        <h3 class="font-serif-tc font-bold text-amber-300 text-lg"><i class="fa-solid fa-magnifying-glass"></i> 顧客手機號碼快速查單</h3>
+        <button onclick="window.closeLookupModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="flex gap-2 text-xs">
+        <input type="tel" id="lookup-phone" class="flex-grow px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none" placeholder="輸入下單手機號碼">
+        <button onclick="window.performLookup()" class="px-4 py-2 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition">搜尋</button>
+      </div>
+
+      <div id="lookup-result" class="text-xs text-zinc-300 max-h-60 overflow-y-auto space-y-2 pt-2">
+        <!-- 查詢結果寫入區 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 店家後台安全鎖 Modal ==================== -->
+  <div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full p-6 space-y-4 text-left">
+      <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
+        <h3 class="font-serif-tc font-bold text-amber-300 text-lg"><i class="fa-solid fa-user-shield"></i> 店家接單與對帳管理後台</h3>
+        <button onclick="window.closeAdminModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div id="admin-auth-box" class="space-y-3 text-xs">
+        <p class="text-zinc-400">請輸入 Google Apps Script 設定的安全商家密碼：</p>
+        <div class="flex gap-2">
+          <input type="password" id="admin-password" class="flex-grow px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none" placeholder="管理員密碼">
+          <button onclick="window.verifyAdmin()" class="px-4 py-2 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition">解鎖登入</button>
+        </div>
+      </div>
+
+      <div id="admin-panel-box" class="hidden space-y-3 text-xs">
+        <div class="flex justify-between items-center text-amber-400 font-bold">
+          <span>雲端最新訂單列表：</span>
+          <button onclick="window.loadAdminOrders()" class="text-zinc-400 hover:text-amber-300"><i class="fa-solid fa-arrows-rotate"></i> 重新整理</button>
+        </div>
+        <div id="admin-orders-list" class="max-h-72 overflow-y-auto space-y-2">
+          <!-- 寫入雲端訂單與狀態切換按鈕 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JavaScript 全域邏輯與串接 ==================== -->
+  <script>
+    // ⚠️ 請將下方的網址替換為您部署 Google Apps Script 產生的網頁應用程式 URL
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzz--YOUR-REAL-GAS-ID--/exec";
+
+    // 購物車全域狀態
+    window.cart = [];
+
+    // 1. 檢視模式切換 (自動 / 模擬手機 / 模擬電腦)
+    window.setViewMode = function(mode) {
+      const container = document.getElementById('sim-container');
+      const btnAuto = document.getElementById('btn-mode-auto');
+      const btnMobile = document.getElementById('btn-mode-mobile');
+      const btnDesktop = document.getElementById('btn-mode-desktop');
+
+      // 清除全部類別
+      container.classList.remove('sim-mobile-device', 'sim-desktop-device', 'is-mobile-sim');
+      btnAuto.className = btnMobile.className = btnDesktop.className = "px-2 py-1 rounded bg-zinc-800 text-gray-300 border border-zinc-700 hover:bg-zinc-700 transition";
+
+      if (mode === 'mobile') {
+        container.classList.add('sim-mobile-device', 'is-mobile-sim');
+        btnMobile.className = "px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition";
+      } else if (mode === 'desktop') {
+        container.classList.add('sim-desktop-device');
+        btnDesktop.className = "px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition";
+      } else {
+        btnAuto.className = "px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40 transition";
+      }
+    };
+
+    // 2. 購物車核心邏輯
+    window.addToCart = function(name, price) {
+      const existing = window.cart.find(i => i.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        window.cart.push({ name, price, qty: 1 });
+      }
+      window.renderCart();
+      window.toggleCart(true);
+    };
+
+    window.updateQty = function(name, delta) {
+      const item = window.cart.find(i => i.name === name);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          window.cart = window.cart.filter(i => i.name !== name);
         }
+      }
+      window.renderCart();
+    };
 
-        async function updateOrderStatusFromGas(orderId, newStatus) {
-            if (!authenticatedAdminPwd) return;
-            showToast('⏳ 正在更新 Google 試算表狀態...');
+    window.toggleCart = function(forceOpen = false) {
+      const drawer = document.getElementById('cart-drawer');
+      if (forceOpen) {
+        drawer.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.toggle('translate-x-full');
+      }
+    };
 
-            try {
-                const res = await fetch(GAS_WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify({ action: 'adminUpdateStatus', password: authenticatedAdminPwd, orderId, newStatus })
-                });
-                const data = await res.json();
-                if (data.success) {
-                    showToast(`✅ ${data.message}`);
-                    fetchAdminOrdersFromGas();
-                } else {
-                    showToast(data.message);
-                }
-            } catch(e) {
-                showToast('⚠️ 更新失敗');
-            }
+    window.renderCart = function() {
+      const container = document.getElementById('cart-items');
+      const badge = document.getElementById('cart-badge');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const shippingEl = document.getElementById('cart-shipping');
+      const totalEl = document.getElementById('cart-total');
+      const bannerEl = document.getElementById('shipping-banner');
+      const btnCheckout = document.getElementById('btn-goto-checkout');
+
+      container.innerHTML = '';
+      let totalQty = 0;
+      let subtotal = 0;
+
+      window.cart.forEach(item => {
+        totalQty += item.qty;
+        subtotal += item.price * item.qty;
+
+        const div = document.createElement('div');
+        div.className = "p-3 rounded-lg bg-black/60 border border-zinc-800 flex justify-between items-center text-xs";
+        div.innerHTML = `
+          <div>
+            <div class="font-bold text-amber-200">${item.name}</div>
+            <div class="text-zinc-400">NT$ ${item.price} × ${item.qty}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="window.updateQty('${item.name}', -1)" class="w-6 h-6 rounded bg-zinc-800 text-zinc-300 flex items-center justify-center font-bold">-</button>
+            <span class="text-amber-300 font-bold">${item.qty}</span>
+            <button onclick="window.updateQty('${item.name}', 1)" class="w-6 h-6 rounded bg-zinc-800 text-zinc-300 flex items-center justify-center font-bold">+</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      // 運費規則：未滿 10 包/件運費 80，滿 10 包免運
+      const shipping = totalQty >= 10 || totalQty === 0 ? 0 : 80;
+      const grandTotal = subtotal + (totalQty > 0 ? shipping : 0);
+
+      // 更新 Badge 與進度條
+      if (totalQty > 0) {
+        badge.innerText = totalQty;
+        badge.classList.remove('hidden');
+        btnCheckout.disabled = false;
+      } else {
+        badge.classList.add('hidden');
+        btnCheckout.disabled = true;
+        container.innerHTML = `<div class="text-center text-zinc-500 py-10">購物車內目前沒有商品</div>`;
+      }
+
+      subtotalEl.innerText = `NT$ ${subtotal}`;
+      shippingEl.innerText = shipping === 0 ? "免運費" : `NT$ ${shipping}`;
+      totalEl.innerText = `NT$ ${grandTotal}`;
+
+      if (totalQty >= 10) {
+        bannerEl.innerText = "🎉 已達 10 件，享有免運費優惠！";
+      } else {
+        bannerEl.innerText = `還差 ${10 - totalQty} 件即可享有免運費優惠！`;
+      }
+    };
+
+    // 3. 禮盒搭配 Modal 邏輯
+    window.openGiftModal = function() { document.getElementById('gift-modal').classList.remove('hidden'); };
+    window.closeGiftModal = function() { document.getElementById('gift-modal').classList.add('hidden'); };
+    window.addGiftToCart = function() {
+      const g1 = document.getElementById('gift-item-1').value;
+      const g2 = document.getElementById('gift-item-2').value;
+      window.addToCart(`雙罐禮盒(${g1}+${g2})`, 588);
+      window.closeGiftModal();
+    };
+
+    // 4. 結帳與送出表單邏輯
+    window.openCheckoutModal = function() {
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    };
+    window.closeCheckoutModal = function() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    };
+
+    window.updateShippingUI = function() {
+      const method = document.getElementById('cust-shipping-method').value;
+      const lbl = document.getElementById('lbl-address');
+      const input = document.getElementById('cust-address');
+
+      if (method === '郵寄') {
+        lbl.innerText = "收件完整地址 *";
+        input.placeholder = "請輸入縣市、鄉鎮市區與詳細地址";
+      } else {
+        lbl.innerText = "門市名稱與店號 *";
+        input.placeholder = `例如：${method} 鑫高雄門市 (123456)`;
+      }
+    };
+
+    window.handleFormSubmit = async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-submit-order');
+      btn.disabled = true;
+      btn.innerText = "訂單處理中，請稍候...";
+
+      const totalQty = window.cart.reduce((a, b) => a + b.qty, 0);
+      const subtotal = window.cart.reduce((a, b) => a + (b.price * b.qty), 0);
+      const shipping = totalQty >= 10 ? 0 : 80;
+      const grandTotal = subtotal + shipping;
+
+      const orderData = {
+        name: document.getElementById('cust-name').value,
+        phone: document.getElementById('cust-phone').value,
+        shippingMethod: document.getElementById('cust-shipping-method').value,
+        address: document.getElementById('cust-address').value,
+        bankLast5: document.getElementById('cust-bank-last5').value,
+        note: document.getElementById('cust-note').value,
+        items: window.cart,
+        totalAmount: grandTotal
+      };
+
+      try {
+        const response = await fetch(GAS_WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({ action: 'CREATE_ORDER', payload: orderData })
+        });
+        const res = await response.json();
+
+        if (res.status === 'success') {
+          document.getElementById('res-order-id').innerText = res.orderId;
+          document.getElementById('res-order-amount').innerText = `NT$ ${grandTotal}`;
+          
+          // 設定 LINE 官方客服訊息按鈕
+          const lineMsg = encodeURIComponent(`您好！我已完成【何老酥】訂單下單：\n訂單編號：${res.orderId}\n訂購人：${orderData.name}\n金額：NT$ ${grandTotal}\n轉帳末 5 碼：${orderData.bankLast5}`);
+          document.getElementById('btn-send-line').href = `https://line.me/R/msg/text/?${lineMsg}`;
+
+          window.closeCheckoutModal();
+          document.getElementById('success-modal').classList.remove('hidden');
+          
+          // 清空購物車
+          window.cart = [];
+          window.renderCart();
+          window.toggleCart(false);
+        } else {
+          alert('下單失敗：' + res.message);
         }
+      } catch (err) {
+        alert('連線失敗，請檢查網路或 GAS 網址設定。');
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "確認送出訂單";
+      }
+    };
 
-        function openGiftBoxModal() { document.getElementById('giftbox-modal').classList.remove('hidden'); }
-        function closeGiftBoxModal() { document.getElementById('giftbox-modal').classList.add('hidden'); }
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed top-14 left-1/2 -translate-x-1/2 bg-stone-900/95 text-amber-300 text-xs sm:text-sm font-bold px-4 py-2 rounded-full z-50 shadow-2xl border border-amber-400/50 flex items-center gap-2 pointer-events-none';
-            toast.innerHTML = msg;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2200);
+    window.closeSuccessModal = function() {
+      document.getElementById('success-modal').classList.add('hidden');
+    };
+
+    // 5. 顧客手機號碼速查邏輯
+    window.openLookupModal = function() { document.getElementById('lookup-modal').classList.remove('hidden'); };
+    window.closeLookupModal = function() { document.getElementById('lookup-modal').classList.add('hidden'); };
+
+    window.performLookup = async function() {
+      const phone = document.getElementById('lookup-phone').value.trim();
+      const resContainer = document.getElementById('lookup-result');
+      if (!phone) return alert('請輸入手機號碼');
+
+      resContainer.innerText = "查詢中...";
+
+      try {
+        const response = await fetch(`${GAS_WEB_APP_URL}?action=LOOKUP_ORDER&phone=${encodeURIComponent(phone)}`);
+        const res = await response.json();
+
+        if (res.status === 'success' && res.orders.length > 0) {
+          resContainer.innerHTML = '';
+          res.orders.forEach(o => {
+            const div = document.createElement('div');
+            div.className = "p-3 rounded bg-black/60 border border-zinc-800 space-y-1";
+            div.innerHTML = `
+              <div class="flex justify-between text-amber-300 font-bold">
+                <span>單號：${o.orderId}</span>
+                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-200 text-[10px]">${o.status}</span>
+              </div>
+              <div class="text-zinc-400">下單時間：${o.timestamp}</div>
+              <div class="text-zinc-200">內容：${o.items}</div>
+              <div class="text-amber-400 font-bold">金額：NT$ ${o.totalAmount} (末5碼: ${o.bankLast5})</div>
+            `;
+            resContainer.appendChild(div);
+          });
+        } else {
+          resContainer.innerText = "未找到與該手機號碼相關的訂單紀錄。";
         }
+      } catch (err) {
+        resContainer.innerText = "查詢失敗，請稍後再試。";
+      }
+    };
 
-        // Window Event Bindings
-        window.setViewMode = setViewMode;
-        window.addToCart = addToCart;
-        window.addGiftBoxToCart = addGiftBoxToCart;
-        window.toggleCart = toggleCart;
-        window.updateQty = updateQty;
-        window.openCheckoutModal = openCheckoutModal;
-        window.closeCheckoutModal = closeCheckoutModal;
-        window.updateShippingUI = updateShippingUI;
-        window.handleOrderSubmit = handleOrderSubmit;
-        window.sendOrderToLine = sendOrderToLine;
-        window.openGiftBoxModal = openGiftBoxModal;
-        window.closeGiftBoxModal = closeGiftBoxModal;
-        window.openOrderLookupModal = openOrderLookupModal;
-        window.closeOrderLookupModal = closeOrderLookupModal;
-        window.executeOrderLookup = executeOrderLookup;
-        window.openAdminModal = openAdminModal;
-        window.closeAdminModal = closeAdminModal;
-        window.verifyAdminAndLoad = verifyAdminAndLoad;
-        window.fetchAdminOrdersFromGas = fetchAdminOrdersFromGas;
-        window.updateOrderStatusFromGas = updateOrderStatusFromGas;
-    </script>
+    // 6. 店家管理後台密碼驗證與狀態更新邏輯
+    window.openAdminModal = function() { document.getElementById('admin-modal').classList.remove('hidden'); };
+    window.closeAdminModal = function() { document.getElementById('admin-modal').classList.add('hidden'); };
+
+    window.verifyAdmin = async function() {
+      const pwd = document.getElementById('admin-password').value;
+      if (!pwd) return alert('請輸入密碼');
+
+      try {
+        const response = await fetch(`${GAS_WEB_APP_URL}?action=GET_ADMIN_ORDERS&password=${encodeURIComponent(pwd)}`);
+        const res = await response.json();
+
+        if (res.status === 'success') {
+          document.getElementById('admin-auth-box').classList.add('hidden');
+          document.getElementById('admin-panel-box').classList.remove('hidden');
+          window.renderAdminOrders(res.orders, pwd);
+        } else {
+          alert('密碼錯誤！');
+        }
+      } catch (err) {
+        alert('驗證失敗。');
+      }
+    };
+
+    window.loadAdminOrders = function() {
+      const pwd = document.getElementById('admin-password').value;
+      window.verifyAdmin();
+    };
+
+    window.renderAdminOrders = function(orders, pwd) {
+      const container = document.getElementById('admin-orders-list');
+      container.innerHTML = '';
+
+      if (orders.length === 0) {
+        container.innerText = "目前尚無訂單紀錄。";
+        return;
+      }
+
+      orders.forEach(o => {
+        const div = document.createElement('div');
+        div.className = "p-3 rounded bg-black/60 border border-zinc-800 space-y-1.5";
+        div.innerHTML = `
+          <div class="flex justify-between font-bold text-amber-300">
+            <span>${o.orderId} (${o.name})</span>
+            <span>${o.status}</span>
+          </div>
+          <div class="text-zinc-300">電話: ${o.phone} | 末5碼: ${o.bankLast5}</div>
+          <div class="text-zinc-400">品項: ${o.items}</div>
+          <div class="flex gap-2 pt-1">
+            <button onclick="window.updateOrderStatus('${o.orderId}', '🟡 已對帳備貨中', '${pwd}')" class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40">標示已對帳</button>
+            <button onclick="window.updateOrderStatus('${o.orderId}', '🚚 已寄出', '${pwd}')" class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/40">標示已寄出</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    };
+
+    window.updateOrderStatus = async function(orderId, newStatus, pwd) {
+      try {
+        const response = await fetch(GAS_WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({ action: 'UPDATE_STATUS', payload: { orderId, newStatus, password: pwd } })
+        });
+        const res = await response.json();
+        if (res.status === 'success') {
+          alert('狀態更新成功！');
+          window.loadAdminOrders();
+        } else {
+          alert('更新失敗：' + res.message);
+        }
+      } catch (err) {
+        alert('連線失敗。');
+      }
+    };
+  </script>
 </body>
 </html>
