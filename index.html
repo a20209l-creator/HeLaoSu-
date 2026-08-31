@@ -76,7 +76,7 @@
     class="bg-black/90 border-b border-amber-500/30 text-xs py-2 px-4 sticky top-0 z-50 flex justify-between items-center">
     <div class="flex items-center space-x-2 text-amber-300 mx-auto sm:mx-0">
       <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="font-bold">【何老酥】團購揪團特賣會 · 滿 10 件即享免運費（本團為民間代購揪團，與品牌原廠無隸屬關係）</span>
+      <span class="font-bold">【何老酥】團購揪團特賣會 · 滿 10 件即享免運費（原廠授權經銷商）</span>
     </div>
   </div>
 
@@ -104,11 +104,11 @@
       </nav>
 
       <div class="flex items-center space-x-2 sm:space-x-3">
-        <button onclick="window.openLookupModal()"
-          class="px-2.5 py-1.5 text-xs rounded-full bg-zinc-800 border border-amber-500/40 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <span>訂單查詢</span>
-        </button>
+        <a href="https://line.me/R/ti/p/@959dadcl" target="_blank"
+          class="px-2.5 py-1.5 text-xs rounded-full bg-emerald-600 border border-emerald-500/40 text-white hover:bg-emerald-500 transition flex items-center gap-1 font-bold">
+          <i class="fa-brands fa-line text-sm"></i>
+          <span>加入官方 LINE</span>
+        </a>
 
         <button onclick="window.toggleCart()"
           class="relative p-2 rounded-full bg-amber-500 text-black font-bold hover:bg-amber-400 transition flex items-center justify-center shadow-lg shadow-amber-500/20">
@@ -167,7 +167,7 @@
         <div class="w-full md:w-5/12">
           <div
             class="gold-border-box rounded-2xl bg-dark-card p-4 sm:p-6 relative overflow-hidden text-center space-y-3 sm:space-y-4 shadow-2xl">
-            <div class="text-[10px] sm:text-xs text-amber-40-0 tracking-widest font-serif-tc">HE LAO SU GROUP BUY</div>
+            <div class="text-[10px] sm:text-xs text-amber-400 tracking-widest font-serif-tc">HE LAO SU GROUP BUY</div>
             <h3 class="text-lg sm:text-2xl font-serif-tc font-bold text-amber-100">何老酥黑輪脆口酥團購</h3>
 
             <div
@@ -492,8 +492,7 @@
 
         <div class="p-4 sm:p-5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-1.5">
           <h3 class="font-bold text-amber-300 text-xs sm:text-sm">Q3：目前提供哪些付款與配送方式？</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">目前全面採用「銀行轉帳 / ATM 匯款」預付款項。配送支援 7-ELEVEN
-            超商純取貨、全家超商純取貨，以及中華郵政郵寄到府。</p>
+          <p class="text-xs text-zinc-400 leading-relaxed">請將購物清單傳送至 LINE 官方帳號，由小幫手協助您確認付款與配送方式。</p>
         </div>
       </div>
     </div>
@@ -504,19 +503,12 @@
     <div class="flex justify-center items-center space-x-2 text-amber-400/80">
       <span class="font-serif-tc font-bold">何老酥黑輪脆口酥團購特賣</span>
       <span>·</span>
-      <span>民間團購揪團頁面</span>
+      <span>原廠授權經銷商</span>
     </div>
     <p class="text-[11px] text-zinc-400 max-w-xl mx-auto">
       ⚠️ 免責聲明：本網頁為個人/團購主推廣與代購性質，與原品牌公司無隸屬關係。所有商品商標與版權皆歸原公司所有。
     </p>
     <p>© 2026 何老酥團購網. All Rights Reserved.</p>
-
-    <div class="pt-2">
-      <button onclick="window.openAdminModal()"
-        class="px-3 py-1 rounded bg-zinc-900 text-zinc-600 hover:text-amber-400 border border-zinc-800 transition text-[10px]">
-        <i class="fa-solid fa-user-shield"></i> 店家接單管理後台
-      </button>
-    </div>
   </footer>
 
   <!-- 購物車 Drawer -->
@@ -545,137 +537,14 @@
         <span id="cart-shipping" class="font-bold text-amber-400">NT$ 80</span>
       </div>
       <div class="flex justify-between items-center text-sm sm:text-base border-t border-zinc-800 pt-2">
-        <span class="font-bold text-amber-200">總計應付金額：</span>
+        <span class="font-bold text-amber-200">總計預估金額：</span>
         <span id="cart-total" class="font-bold text-gold-gradient text-lg sm:text-xl">NT$ 80</span>
       </div>
 
-      <button id="btn-goto-checkout" onclick="window.openCheckoutModal()"
-        class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-xs sm:text-sm hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-500/20">
-        前往填寫資料結帳
-      </button>
-    </div>
-  </div>
-
-  <!-- 結帳 Modal -->
-  <div id="checkout-modal"
-    class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div
-      class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-4 text-left">
-      <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-lg sm:text-xl">填寫訂購與配送資料</h3>
-        <button onclick="window.closeCheckoutModal()" class="text-zinc-400 hover:text-white"><i
-            class="fa-solid fa-xmark text-lg"></i></button>
-      </div>
-
-      <form id="checkout-form" onsubmit="window.handleFormSubmit(event)" class="space-y-3.5 text-xs">
-        <div class="space-y-1">
-          <label class="text-amber-200 font-bold">訂購人姓名 *</label>
-          <input type="text" id="cust-name" required
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none"
-            placeholder="請輸入姓名">
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-amber-200 font-bold">行動電話 (查單關鍵字) *</label>
-          <input type="tel" id="cust-phone" required pattern="[0-9]{10}"
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none"
-            placeholder="範例：0912345678">
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-amber-200 font-bold">電子信箱 (選填)</label>
-          <input type="email" id="cust-email"
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none"
-            placeholder="example@gmail.com">
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-amber-200 font-bold">配送方式 *</label>
-          <select id="cust-shipping-method" onchange="window.updateShippingUI()"
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none">
-            <option value="7-11">7-ELEVEN 超商純取貨</option>
-            <option value="全家">全家超商純取貨</option>
-            <option value="郵寄">中華郵政 郵寄到府</option>
-          </select>
-        </div>
-
-        <div class="space-y-1">
-          <label id="lbl-address" class="text-amber-200 font-bold">門市名稱與店號 / 郵寄地址 *</label>
-          <input type="text" id="cust-address" required
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none"
-            placeholder="例如：7-11 鑫高雄門市 (123456) 或郵寄地址">
-        </div>
-
-        <div class="p-3 rounded bg-amber-500/10 border border-amber-500/30 space-y-1">
-          <div class="font-bold text-amber-300">付款方式：銀行轉帳 / ATM 匯款</div>
-          <div class="text-[11px] text-zinc-400">請於下單後轉帳至團購指定帳戶。</div>
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-amber-200 font-bold">您的轉帳帳號末 5 碼 *</label>
-          <input type="text" id="cust-bank-last5" required maxlength="5" pattern="[0-9]{5}"
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none"
-            placeholder="請填寫末 5 碼以供對帳">
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-zinc-400">訂單備註 (選填)</label>
-          <input type="text" id="cust-note"
-            class="w-full px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 focus:border-amber-400 outline-none"
-            placeholder="例：方便收貨時間或注意事項">
-        </div>
-
-        <div class="pt-2">
-          <button type="submit" id="btn-submit-order"
-            class="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-xs sm:text-sm hover:brightness-110 transition shadow-lg shadow-amber-500/20">
-            確認送出訂單
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- 下單成功 Modal -->
-  <div id="success-modal"
-    class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="gold-border-box bg-dark-card rounded-2xl max-w-md w-full p-5 sm:p-6 text-center space-y-4">
-      <div
-        class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 flex items-center justify-center text-2xl mx-auto">
-        <i class="fa-solid fa-check"></i>
-      </div>
-
-      <h3 class="font-serif-tc font-bold text-amber-200 text-xl sm:text-2xl">訂單建立成功！</h3>
-
-      <div class="text-xs text-zinc-300 space-y-1">
-        <div>您的訂單編號：<span id="res-order-id" class="font-mono text-amber-400 font-bold"></span></div>
-        <div>資料已成功寫入雲端對帳系統！</div>
-      </div>
-
-      <div class="p-3.5 rounded-xl bg-black/60 border border-amber-500/30 text-left space-y-1.5 text-xs">
-        <div class="font-bold text-amber-300 border-b border-amber-500/20 pb-1">🏦 請完成轉帳匯款：</div>
-        <div class="text-zinc-200">銀行代碼：<span class="text-amber-400 font-bold">822 (中國信託)</span></div>
-        <div class="text-zinc-200">帳戶帳號：<span class="text-amber-400 font-bold font-mono">1234-5678-9012</span></div>
-        <div class="text-zinc-200">戶名：<span class="text-amber-400 font-bold">何老酥團購專戶</span></div>
-        <div class="text-zinc-200">轉帳總金額：<span id="res-order-amount"
-            class="text-gold-gradient font-bold text-sm sm:text-base"></span></div>
-      </div>
-
-      <div class="pt-1 space-y-2">
-        <a href="https://line.me/R/ti/p/@959dadcl" target="_blank"
-          class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs sm:text-sm hover:bg-emerald-500 transition flex items-center justify-center gap-2 shadow-md">
-          <i class="fa-brands fa-line text-lg"></i> 第一步：點此加入 LINE 官方帳號
-        </a>
-
-        <a id="btn-send-line" href="#" target="_blank"
-          class="w-full py-2.5 rounded-xl bg-emerald-500 text-black font-bold text-xs sm:text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2 shadow-md">
-          <i class="fa-brands fa-line text-lg"></i> 第二步：一鍵傳送訂單與對帳資訊
-        </a>
-
-        <button onclick="window.closeSuccessModal()"
-          class="w-full py-2 rounded-xl bg-zinc-800 text-zinc-300 text-xs hover:bg-zinc-700 transition mt-2">
-          關閉視窗
-        </button>
-      </div>
+      <a id="btn-line-checkout" href="#" target="_blank"
+        class="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold text-xs sm:text-sm hover:bg-emerald-400 transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+        <i class="fa-brands fa-line text-lg"></i> 傳送訂單明細至 LINE 官方帳號
+      </a>
     </div>
   </div>
 
@@ -724,75 +593,9 @@
     </div>
   </div>
 
-  <!-- 查單 Modal -->
-  <div id="lookup-modal"
-    class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-md w-full p-5 sm:p-6 space-y-4 text-left">
-      <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-base sm:text-lg"><i
-            class="fa-solid fa-magnifying-glass"></i> 顧客手機號碼快速查單</h3>
-        <button onclick="window.closeLookupModal()" class="text-zinc-400 hover:text-white"><i
-            class="fa-solid fa-xmark"></i></button>
-      </div>
-
-      <div class="flex gap-2 text-xs">
-        <input type="tel" id="lookup-phone"
-          class="flex-grow px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none"
-          placeholder="輸入下單手機號碼 (例如 0912345678)">
-        <button onclick="window.performLookup()"
-          class="px-3.5 py-2 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition">搜尋</button>
-      </div>
-
-      <div id="lookup-result" class="text-xs text-zinc-300 max-h-60 overflow-y-auto space-y-2 pt-2"></div>
-    </div>
-  </div>
-
-  <!-- 店家後台 Modal -->
-  <div id="admin-modal"
-    class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-zinc-900 border border-amber-500/40 rounded-2xl max-w-lg w-full p-5 sm:p-6 space-y-4 text-left">
-      <div class="flex justify-between items-center border-b border-zinc-800 pb-2">
-        <h3 class="font-serif-tc font-bold text-amber-300 text-base sm:text-lg"><i class="fa-solid fa-user-shield"></i>
-          團主接單與對帳管理後台</h3>
-        <button onclick="window.closeAdminModal()" class="text-zinc-400 hover:text-white"><i
-            class="fa-solid fa-xmark"></i></button>
-      </div>
-
-      <div id="admin-auth-box" class="space-y-3 text-xs">
-        <p class="text-zinc-400">請輸入 Google Apps Script 設定的安全管理密碼：</p>
-        <div class="flex gap-2">
-          <input type="password" id="admin-password"
-            class="flex-grow px-3 py-2 rounded bg-zinc-800 border border-zinc-700 text-zinc-100 outline-none"
-            placeholder="管理員密碼">
-          <button onclick="window.verifyAdmin()"
-            class="px-4 py-2 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition">解鎖登入</button>
-        </div>
-      </div>
-
-      <div id="admin-panel-box" class="hidden space-y-3 text-xs">
-        <div class="flex justify-between items-center text-amber-400 font-bold">
-          <span>雲端最新訂單列表：</span>
-          <button onclick="window.loadAdminOrders()" class="text-zinc-400 hover:text-amber-300"><i
-              class="fa-solid fa-arrows-rotate"></i> 重新整理</button>
-        </div>
-        <div id="admin-orders-list" class="max-h-72 overflow-y-auto space-y-2"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 核心與 GAS 完全對接的 JS 邏輯 -->
+  <!-- JavaScript 邏輯 -->
   <script>
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyAxbGiRUhlCdKm4PNZQM7rYBWEN9ZZvf9zFyZJbmRUW49O-WAc0igFTkDcd024L7bo/exec";
     window.cart = [];
-
-    async function callGasApi(action, payload = {}) {
-      const response = await fetch(GAS_WEB_APP_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ action, ...payload })
-      });
-      return await response.json();
-    }
 
     window.addToCart = function (name, price) {
       const existing = window.cart.find(i => i.name === name);
@@ -822,7 +625,7 @@
       const shippingEl = document.getElementById('cart-shipping');
       const totalEl = document.getElementById('cart-total');
       const bannerEl = document.getElementById('shipping-banner');
-      const btnCheckout = document.getElementById('btn-goto-checkout');
+      const btnLineCheckout = document.getElementById('btn-line-checkout');
 
       container.innerHTML = '';
       let totalQty = 0;
@@ -854,10 +657,10 @@
       if (totalQty > 0) {
         badge.innerText = totalQty;
         badge.classList.remove('hidden');
-        btnCheckout.disabled = false;
+        btnLineCheckout.classList.remove('opacity-50', 'pointer-events-none');
       } else {
         badge.classList.add('hidden');
-        btnCheckout.disabled = true;
+        btnLineCheckout.classList.add('opacity-50', 'pointer-events-none');
         container.innerHTML = `<div class="text-center text-zinc-500 py-10">購物車內目前沒有商品</div>`;
       }
 
@@ -870,6 +673,11 @@
       } else {
         bannerEl.innerText = `還差 ${10 - totalQty} 件即可享有免運費優惠！`;
       }
+
+      // 產生 LINE 一鍵傳送明細文字
+      let itemsText = window.cart.map(i => `・${i.name} x ${i.qty} (NT$ ${i.price * i.qty})`).join('\n');
+      let lineMessage = encodeURIComponent(`您好，我想訂購以下品項：\n\n${itemsText}\n\n商品小計：NT$ ${subtotal}\n運費：NT$ ${shipping}\n總計金額：NT$ ${grandTotal}\n\n請幫我確認與安排配送！`);
+      btnLineCheckout.href = `https://line.me/R/msg/text/?${lineMessage}`;
     };
 
     window.openGiftModal = function () { document.getElementById('gift-modal').classList.remove('hidden'); };
@@ -879,187 +687,6 @@
       const g2 = document.getElementById('gift-item-2').value;
       window.addToCart(`雙罐禮盒(${g1}+${g2})`, 588);
       window.closeGiftModal();
-    };
-
-    window.openCheckoutModal = function () { document.getElementById('checkout-modal').classList.remove('hidden'); };
-    window.closeCheckoutModal = function () { document.getElementById('checkout-modal').classList.add('hidden'); };
-
-    window.updateShippingUI = function () {
-      const method = document.getElementById('cust-shipping-method').value;
-      const lbl = document.getElementById('lbl-address');
-      const input = document.getElementById('cust-address');
-
-      if (method === '郵寄') {
-        lbl.innerText = "收件完整地址 *";
-        input.placeholder = "請輸入縣市、鄉鎮市區與詳細地址";
-      } else {
-        lbl.innerText = "門市名稱與店號 *";
-        input.placeholder = `例如：${method} 鑫高雄門市 (123456)`;
-      }
-    };
-
-    window.handleFormSubmit = async function (e) {
-      e.preventDefault();
-      const btn = document.getElementById('btn-submit-order');
-      btn.disabled = true;
-      btn.innerText = "訂單處理中，請稍候...";
-
-      const totalQty = window.cart.reduce((a, b) => a + b.qty, 0);
-      const subtotal = window.cart.reduce((a, b) => a + (b.price * b.qty), 0);
-      const shipping = totalQty >= 10 ? 0 : 80;
-      const grandTotal = subtotal + shipping;
-      const generatedOrderId = 'HL' + new Date().toISOString().replace(/[-T:.Z]/g, "").slice(0, 14);
-      const formattedDate = new Date().toLocaleString("zh-TW", { timeZone: "Asia/Taipei" });
-
-      const orderData = {
-        orderId: generatedOrderId,
-        date: formattedDate,
-        name: document.getElementById('cust-name').value,
-        phone: document.getElementById('cust-phone').value,
-        email: document.getElementById('cust-email').value || "無",
-        shippingMethodText: document.getElementById('cust-shipping-method').value,
-        address: document.getElementById('cust-address').value,
-        bankLast5: document.getElementById('cust-bank-last5').value,
-        note: document.getElementById('cust-note').value || "無",
-        items: window.cart,
-        subtotal: subtotal,
-        shipping: shipping,
-        grandTotal: grandTotal,
-        status: "⏳ 待匯款對帳"
-      };
-
-      try {
-        const res = await callGasApi('createOrder', { orderData: orderData });
-
-        if (res.success) {
-          document.getElementById('res-order-id').innerText = generatedOrderId;
-          document.getElementById('res-order-amount').innerText = `NT$ ${grandTotal}`;
-
-          const lineMsg = encodeURIComponent(`您好！我已完成【何老酥團購】訂單下單：\n訂單編號：${generatedOrderId}\n訂購人：${orderData.name}\n金額：NT$ ${grandTotal}\n轉帳末 5 碼：${orderData.bankLast5}`);
-          document.getElementById('btn-send-line').href = `https://line.me/R/msg/text/?${lineMsg}`;
-
-          window.closeCheckoutModal();
-          document.getElementById('success-modal').classList.remove('hidden');
-
-          window.cart = [];
-          window.renderCart();
-          window.toggleCart(false);
-        } else {
-          alert('下單失敗：' + res.message);
-        }
-      } catch (err) {
-        alert('連線失敗，請檢查網路或 GAS 後台發布設定。');
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "確認送出訂單";
-      }
-    };
-
-    window.closeSuccessModal = function () { document.getElementById('success-modal').classList.add('hidden'); };
-    window.openLookupModal = function () { document.getElementById('lookup-modal').classList.remove('hidden'); };
-    window.closeLookupModal = function () { document.getElementById('lookup-modal').classList.add('hidden'); };
-
-    window.performLookup = async function () {
-      const phone = document.getElementById('lookup-phone').value.trim();
-      const resContainer = document.getElementById('lookup-result');
-      if (!phone) return alert('請輸入手機號碼');
-
-      resContainer.innerText = "查詢中...";
-
-      try {
-        const res = await callGasApi('lookupOrder', { phone: phone });
-        if (res.success && res.orders && res.orders.length > 0) {
-          resContainer.innerHTML = '';
-          res.orders.forEach(o => {
-            const div = document.createElement('div');
-            div.className = "p-3 rounded bg-black/60 border border-zinc-800 space-y-1";
-            div.innerHTML = `
-              <div class="flex justify-between text-amber-300 font-bold">
-                <span>單號：${o.orderId}</span>
-                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-200 text-[10px]">${o.status}</span>
-              </div>
-              <div class="text-zinc-400">下單時間：${o.date}</div>
-              <div class="text-zinc-200">內容：${o.itemsSummary}</div>
-              <div class="text-amber-400 font-bold">金額：NT$ ${o.grandTotal} (末5碼: ${o.bankLast5})</div>
-            `;
-            resContainer.appendChild(div);
-          });
-        } else {
-          resContainer.innerText = "未找到與該手機號碼相關的訂單紀錄。";
-        }
-      } catch (err) {
-        resContainer.innerText = "查詢連線失敗，請稍後再試。";
-      }
-    };
-
-    window.openAdminModal = function () { document.getElementById('admin-modal').classList.remove('hidden'); };
-    window.closeAdminModal = function () { document.getElementById('admin-modal').classList.add('hidden'); };
-
-    window.verifyAdmin = async function () {
-      const pwd = document.getElementById('admin-password').value;
-      if (!pwd) return alert('請輸入密碼');
-
-      try {
-        const res = await callGasApi('adminFetchOrders', { password: pwd });
-        if (res.success) {
-          document.getElementById('admin-auth-box').classList.add('hidden');
-          document.getElementById('admin-panel-box').classList.remove('hidden');
-          window.renderAdminOrders(res.orders, pwd);
-        } else {
-          alert(res.message || '密碼錯誤！');
-        }
-      } catch (err) {
-        alert('驗證連線失敗。');
-      }
-    };
-
-    window.loadAdminOrders = function () { window.verifyAdmin(); };
-
-    window.renderAdminOrders = function (orders, pwd) {
-      const container = document.getElementById('admin-orders-list');
-      container.innerHTML = '';
-
-      if (orders.length === 0) {
-        container.innerText = "目前尚無訂單紀錄。";
-        return;
-      }
-
-      orders.forEach(o => {
-        const div = document.createElement('div');
-        div.className = "p-3 rounded bg-black/60 border border-zinc-800 space-y-1.5";
-        div.innerHTML = `
-          <div class="flex justify-between font-bold text-amber-300">
-            <span>${o.orderId} (${o.name})</span>
-            <span>${o.status}</span>
-          </div>
-          <div class="text-zinc-300">電話: ${o.phone} | 末5碼: ${o.bankLast5}</div>
-          <div class="text-zinc-400">品項: ${o.itemsSummary}</div>
-          <div class="flex gap-2 pt-1">
-            <button onclick="window.updateOrderStatus('${o.orderId}', '🟡 已對帳備貨中', '${pwd}')" class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/40">標示已對帳</button>
-            <button onclick="window.updateOrderStatus('${o.orderId}', '🚚 已寄出', '${pwd}')" class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/40">標示已寄出</button>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    };
-
-    window.updateOrderStatus = async function (orderId, newStatus, pwd) {
-      try {
-        const res = await callGasApi('adminUpdateStatus', {
-          orderId: orderId,
-          newStatus: newStatus,
-          password: pwd
-        });
-
-        if (res.success) {
-          alert('狀態更新成功！');
-          window.loadAdminOrders();
-        } else {
-          alert('更新失敗：' + res.message);
-        }
-      } catch (err) {
-        alert('連線失敗。');
-      }
     };
   </script>
 </body>
